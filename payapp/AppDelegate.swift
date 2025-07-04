@@ -21,7 +21,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeVC = ViewController()
+        let homeVC = SelectProfileHomeScreen()
         window?.rootViewController = homeVC
         window?.makeKeyAndVisible()
     }

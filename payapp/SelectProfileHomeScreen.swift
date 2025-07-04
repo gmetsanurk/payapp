@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SelectProfileHomeScreen: UIViewController {
+    
+    private weak var selectProfilesList: CollectionView<HomeScreenCell>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
