@@ -17,6 +17,7 @@
 		66A1A5C72E17FE200095FBF8 /* AdaptyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C62E17FE200095FBF8 /* AdaptyUI */; };
 		66A1A5C92E17FE200095FBF8 /* AdaptyUITesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */; };
 		66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */; };
+		66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileHomeScreen.swift; sourceTree = "<group>"; };
 		66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfileCell.swift; sourceTree = "<group>"; };
 		66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileHomeCollectionView.swift; sourceTree = "<group>"; };
+		66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		66A1A5B62E17D5BC0095FBF8 /* payapp */ = {
 			isa = PBXGroup;
 			children = (
+				66A1A5CE2E1811B50095FBF8 /* Models */,
 				66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */,
 				66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */,
 				66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */,
@@ -80,6 +83,14 @@
 				66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		66A1A5CE2E1811B50095FBF8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
+				66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */,
 				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
 				66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */,
 				66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */,
