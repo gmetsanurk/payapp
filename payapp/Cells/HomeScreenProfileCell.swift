@@ -54,5 +54,31 @@ extension HomeScreenProfileCell {
         self.cellPhotoImageView = photoView
     }
     
+    func setupStatusLabel() {
+        let status = UILabel()
+        status.font = .systemFont(ofSize: 12)
+        contentView.addSubview(status)
+        self.statusLabel = status
+    }
     
+    func setupChatButton() {
+        let chatBtn = UIButton(type: .system)
+        chatBtn.setImage(UIImage(systemName: "message.fill"), for: .normal)
+        contentView.addSubview(chatBtn)
+        self.chatButton = chatBtn
+    }
+    
+    func setupVideoButton() {
+        let videoBtn = UIButton(type: .system)
+        videoBtn.setImage(UIImage(systemName: "video.fill"), for: .normal)
+        contentView.addSubview(videoBtn)
+        self.videoButton = videoBtn
+    }
+    
+    func setupLikeButton() {
+        let likeBtn = UIButton(type: .system)
+        likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        contentView.addSubview(likeBtn)
+        self.likeButton = likeBtn
+    }
 }
