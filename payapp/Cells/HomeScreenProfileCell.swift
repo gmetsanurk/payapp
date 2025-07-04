@@ -47,11 +47,11 @@ extension HomeScreenProfileCell {
     }
     
     func setupCellPhotoImageView() {
-        let photoView = UIImageView()
-        photoView.contentMode = .scaleAspectFill
-        photoView.clipsToBounds = true
-        contentView.addSubview(photoView)
-        self.cellPhotoImageView = photoView
+        let photo = UIImageView()
+        photo.contentMode = .scaleAspectFill
+        photo.clipsToBounds = true
+        contentView.addSubview(photo)
+        self.cellPhotoImageView = photo
     }
     
     func setupStatusLabel() {
@@ -64,6 +64,7 @@ extension HomeScreenProfileCell {
     func setupChatButton() {
         let chatBtn = UIButton(type: .system)
         chatBtn.setImage(UIImage(systemName: "message.fill"), for: .normal)
+        setupSettingForCellButtons(for: chatBtn)
         contentView.addSubview(chatBtn)
         self.chatButton = chatBtn
     }
@@ -71,6 +72,7 @@ extension HomeScreenProfileCell {
     func setupVideoButton() {
         let videoBtn = UIButton(type: .system)
         videoBtn.setImage(UIImage(systemName: "video.fill"), for: .normal)
+        setupSettingForCellButtons(for: videoBtn)
         contentView.addSubview(videoBtn)
         self.videoButton = videoBtn
     }
@@ -78,7 +80,14 @@ extension HomeScreenProfileCell {
     func setupLikeButton() {
         let likeBtn = UIButton(type: .system)
         likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        setupSettingForCellButtons(for: likeBtn)
         contentView.addSubview(likeBtn)
         self.likeButton = likeBtn
+    }
+    
+    func setupSettingForCellButtons(for button: UIButton) {
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 14
+        button.tintColor = .black
     }
 }
