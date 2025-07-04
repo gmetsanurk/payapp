@@ -15,15 +15,19 @@ protocol CustomizableCell {
 class HomeScreenProfileCell: UICollectionViewCell {
     
     private weak var nameAgeLabel: UILabel?
-    private weak var cellPhotoImage: UIImage?
-    
+    private weak var cellPhotoImageView: UIImageView?
+    private weak var statusLabel: UILabel?
+    private weak var chatButton: UIButton?
+    private weak var videoButton: UIButton?
+    private weak var likeButton: UIButton?
+    private weak var countryLabel: UIButton?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor.white
         
-        createNameAgeLabel()
+        setupNameAgeLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -33,12 +37,22 @@ class HomeScreenProfileCell: UICollectionViewCell {
 
 extension HomeScreenProfileCell {
     
-    func createNameAgeLabel() {
+    func setupNameAgeLabel() {
         let label = UILabel()
         contentView.addSubview(label)
         label.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        nameAgeLabel = label
+        self.nameAgeLabel = label
     }
+    
+    func setupCellPhotoImageView() {
+        let photoView = UIImageView()
+        photoView.contentMode = .scaleAspectFill
+        photoView.clipsToBounds = true
+        contentView.addSubview(photoView)
+        self.cellPhotoImageView = photoView
+    }
+    
+    
 }
