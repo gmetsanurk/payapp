@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol CustomizableCell {
+    
+}
+
 class HomeScreenCell: UICollectionViewCell {
     
     private weak var nameAgeLabel: UILabel?
