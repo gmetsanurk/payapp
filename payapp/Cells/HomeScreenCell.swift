@@ -9,7 +9,9 @@ import UIKit
 
 class HomeScreenCell: UICollectionViewCell {
     
-    private weak var label: UILabel?
+    private weak var nameAgeLabel: UILabel?
+    private weak var cellPhotoImage: UIImage?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
