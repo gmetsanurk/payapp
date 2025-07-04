@@ -6,30 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */; };
+		66A1A5B82E17D5BC0095FBF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B52E17D5BC0095FBF8 /* ViewController.swift */; };
+		66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		66A1A5882E17CAE80095FBF8 /* payapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = payapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66A1A5B42E17D5BC0095FBF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66A1A5B52E17D5BC0095FBF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		66A1A59A2E17CAE90095FBF8 /* Exceptions for "payapp" folder in "payapp" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 66A1A5872E17CAE80095FBF8 /* payapp */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		66A1A58A2E17CAE80095FBF8 /* payapp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				66A1A59A2E17CAE90095FBF8 /* Exceptions for "payapp" folder in "payapp" target */,
-			);
-			path = payapp;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		66A1A5852E17CAE80095FBF8 /* Frameworks */ = {
@@ -45,7 +34,7 @@
 		66A1A57F2E17CAE80095FBF8 = {
 			isa = PBXGroup;
 			children = (
-				66A1A58A2E17CAE80095FBF8 /* payapp */,
+				66A1A5B62E17D5BC0095FBF8 /* payapp */,
 				66A1A5892E17CAE80095FBF8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +45,17 @@
 				66A1A5882E17CAE80095FBF8 /* payapp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		66A1A5B62E17D5BC0095FBF8 /* payapp */ = {
+			isa = PBXGroup;
+			children = (
+				66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */,
+				66A1A5B52E17D5BC0095FBF8 /* ViewController.swift */,
+				66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */,
+				66A1A5B42E17D5BC0095FBF8 /* Info.plist */,
+			);
+			path = payapp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +72,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				66A1A58A2E17CAE80095FBF8 /* payapp */,
 			);
 			name = payapp;
 			packageProductDependencies = (
@@ -122,6 +119,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +130,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
+				66A1A5B82E17D5BC0095FBF8 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +149,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = payapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -160,9 +158,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.georgymetsanurk.payapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -177,8 +179,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = payapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -188,9 +188,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.georgymetsanurk.payapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
