@@ -14,13 +14,13 @@ protocol CustomizableCell {
 
 class HomeScreenProfileCell: UICollectionViewCell {
     
-    private weak var nameAgeLabel: UILabel?
     private weak var cellPhotoImageView: UIImageView?
+    private weak var nameAgeLabel: UILabel?
     private weak var statusLabel: UILabel?
+    private weak var countryLabel: UILabel?
     private weak var chatButton: UIButton?
     private weak var videoButton: UIButton?
     private weak var likeButton: UIButton?
-    private weak var countryLabel: UIButton?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,15 +37,6 @@ class HomeScreenProfileCell: UICollectionViewCell {
 
 extension HomeScreenProfileCell {
     
-    func setupNameAgeLabel() {
-        let label = UILabel()
-        contentView.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        self.nameAgeLabel = label
-    }
-    
     func setupCellPhotoImageView() {
         let photo = UIImageView()
         photo.contentMode = .scaleAspectFill
@@ -54,11 +45,25 @@ extension HomeScreenProfileCell {
         self.cellPhotoImageView = photo
     }
     
+    func setupNameAgeLabel() {
+        let label = UILabel()
+        contentView.addSubview(label)
+        self.nameAgeLabel = label
+    }
+    
     func setupStatusLabel() {
         let status = UILabel()
         status.font = .systemFont(ofSize: 12)
         contentView.addSubview(status)
         self.statusLabel = status
+    }
+    
+    func setupContryLabel() {
+        let countryLbl = UILabel()
+        countryLbl.font = .systemFont(ofSize: 12)
+        countryLbl.textColor = .white
+        contentView.addSubview(countryLbl)
+        self.countryLabel = countryLbl
     }
     
     func setupChatButton() {
@@ -89,5 +94,18 @@ extension HomeScreenProfileCell {
         button.backgroundColor = .white
         button.layer.cornerRadius = 14
         button.tintColor = .black
+    }
+    
+    func setupLayout() {
+        cellPhotoImageView?.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        nameAgeLabel?.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(8)
+            make.bottom.equalToSuperview().inset(36)
+        }
+        
+        
     }
 }
