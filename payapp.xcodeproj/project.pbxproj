@@ -10,13 +10,13 @@
 		66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */; };
 		66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */; };
 		66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */; };
-		66A1A5BD2E17F4B70095FBF8 /* HomeScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5BC2E17F4AE0095FBF8 /* HomeScreenCell.swift */; };
+		66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */; };
 		66A1A5C02E17FBE70095FBF8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5BF2E17FBE70095FBF8 /* SnapKit */; };
 		66A1A5C32E17FE200095FBF8 /* Adapty in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C22E17FE200095FBF8 /* Adapty */; };
 		66A1A5C52E17FE200095FBF8 /* AdaptyPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */; };
 		66A1A5C72E17FE200095FBF8 /* AdaptyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C62E17FE200095FBF8 /* AdaptyUI */; };
 		66A1A5C92E17FE200095FBF8 /* AdaptyUITesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */; };
-		66A1A5CB2E1800F40095FBF8 /* HomeScreenCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CA2E1800ED0095FBF8 /* HomeScreenCollectionView.swift */; };
+		66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +25,8 @@
 		66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66A1A5B42E17D5BC0095FBF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileHomeScreen.swift; sourceTree = "<group>"; };
-		66A1A5BC2E17F4AE0095FBF8 /* HomeScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCell.swift; sourceTree = "<group>"; };
-		66A1A5CA2E1800ED0095FBF8 /* HomeScreenCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionView.swift; sourceTree = "<group>"; };
+		66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfileCell.swift; sourceTree = "<group>"; };
+		66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileHomeCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 			children = (
 				66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */,
 				66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */,
-				66A1A5CA2E1800ED0095FBF8 /* HomeScreenCollectionView.swift */,
+				66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */,
 				66A1A5BB2E17F4A70095FBF8 /* Cells */,
 				66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */,
 				66A1A5B42E17D5BC0095FBF8 /* Info.plist */,
@@ -77,7 +77,7 @@
 		66A1A5BB2E17F4A70095FBF8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				66A1A5BC2E17F4AE0095FBF8 /* HomeScreenCell.swift */,
+				66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -164,8 +164,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
-				66A1A5CB2E1800F40095FBF8 /* HomeScreenCollectionView.swift in Sources */,
-				66A1A5BD2E17F4B70095FBF8 /* HomeScreenCell.swift in Sources */,
+				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
+				66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */,
 				66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

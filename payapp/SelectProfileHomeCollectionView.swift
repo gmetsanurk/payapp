@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class HomeScreenCollectionView<CellType: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
+class SelectProfileHomeCollectionView<CellType: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -23,7 +23,7 @@ class HomeScreenCollectionView<CellType: UICollectionViewCell>: UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 // MARK: Count the number of cells later
+        return 4 // MARK: Count the number of cells later
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -12,7 +12,7 @@ protocol CustomizableCell {
     
 }
 
-class HomeScreenCell: UICollectionViewCell {
+class HomeScreenProfileCell: UICollectionViewCell {
     
     private weak var nameAgeLabel: UILabel?
     private weak var cellPhotoImage: UIImage?
@@ -31,7 +31,7 @@ class HomeScreenCell: UICollectionViewCell {
     }
 }
 
-extension HomeScreenCell {
+extension HomeScreenProfileCell {
     
     func createNameAgeLabel() {
         let label = UILabel()
