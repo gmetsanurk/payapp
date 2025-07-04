@@ -12,6 +12,10 @@
 		66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */; };
 		66A1A5BD2E17F4B70095FBF8 /* HomeScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5BC2E17F4AE0095FBF8 /* HomeScreenCell.swift */; };
 		66A1A5C02E17FBE70095FBF8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5BF2E17FBE70095FBF8 /* SnapKit */; };
+		66A1A5C32E17FE200095FBF8 /* Adapty in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C22E17FE200095FBF8 /* Adapty */; };
+		66A1A5C52E17FE200095FBF8 /* AdaptyPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */; };
+		66A1A5C72E17FE200095FBF8 /* AdaptyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C62E17FE200095FBF8 /* AdaptyUI */; };
+		66A1A5C92E17FE200095FBF8 /* AdaptyUITesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +32,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5C92E17FE200095FBF8 /* AdaptyUITesting in Frameworks */,
 				66A1A5C02E17FBE70095FBF8 /* SnapKit in Frameworks */,
+				66A1A5C72E17FE200095FBF8 /* AdaptyUI in Frameworks */,
+				66A1A5C32E17FE200095FBF8 /* Adapty in Frameworks */,
+				66A1A5C52E17FE200095FBF8 /* AdaptyPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +97,10 @@
 			name = payapp;
 			packageProductDependencies = (
 				66A1A5BF2E17FBE70095FBF8 /* SnapKit */,
+				66A1A5C22E17FE200095FBF8 /* Adapty */,
+				66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */,
+				66A1A5C62E17FE200095FBF8 /* AdaptyUI */,
+				66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */,
 			);
 			productName = payapp;
 			productReference = 66A1A5882E17CAE80095FBF8 /* payapp.app */;
@@ -120,6 +132,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				66A1A5BE2E17FBE70095FBF8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 66A1A5892E17CAE80095FBF8 /* Products */;
@@ -369,6 +382,14 @@
 				version = 5.7.1;
 			};
 		};
+		66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adaptyteam/AdaptySDK-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -376,6 +397,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66A1A5BE2E17FBE70095FBF8 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		66A1A5C22E17FE200095FBF8 /* Adapty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = Adapty;
+		};
+		66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = AdaptyPlugin;
+		};
+		66A1A5C62E17FE200095FBF8 /* AdaptyUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = AdaptyUI;
+		};
+		66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = AdaptyUITesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
