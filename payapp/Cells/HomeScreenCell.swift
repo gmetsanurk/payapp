@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeScreenCell: UICollectionViewCell {
     
@@ -17,9 +18,23 @@ class HomeScreenCell: UICollectionViewCell {
         super.init(frame: frame)
         
         backgroundColor = UIColor.white
+        
+        createNameAgeLabel()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension HomeScreenCell {
+    
+    func createNameAgeLabel() {
+        let label = UILabel()
+        contentView.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        nameAgeLabel = label
     }
 }
