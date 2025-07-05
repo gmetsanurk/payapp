@@ -6,36 +6,41 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */; };
+		66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */; };
+		66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */; };
+		66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */; };
+		66A1A5C02E17FBE70095FBF8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5BF2E17FBE70095FBF8 /* SnapKit */; };
+		66A1A5C32E17FE200095FBF8 /* Adapty in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C22E17FE200095FBF8 /* Adapty */; };
+		66A1A5C52E17FE200095FBF8 /* AdaptyPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */; };
+		66A1A5C72E17FE200095FBF8 /* AdaptyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C62E17FE200095FBF8 /* AdaptyUI */; };
+		66A1A5C92E17FE200095FBF8 /* AdaptyUITesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */; };
+		66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */; };
+		66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		66A1A5882E17CAE80095FBF8 /* payapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = payapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66A1A5B42E17D5BC0095FBF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileHomeScreen.swift; sourceTree = "<group>"; };
+		66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProfileCell.swift; sourceTree = "<group>"; };
+		66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileHomeCollectionView.swift; sourceTree = "<group>"; };
+		66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		66A1A59A2E17CAE90095FBF8 /* Exceptions for "payapp" folder in "payapp" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 66A1A5872E17CAE80095FBF8 /* payapp */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		66A1A58A2E17CAE80095FBF8 /* payapp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				66A1A59A2E17CAE90095FBF8 /* Exceptions for "payapp" folder in "payapp" target */,
-			);
-			path = payapp;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		66A1A5852E17CAE80095FBF8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5C92E17FE200095FBF8 /* AdaptyUITesting in Frameworks */,
+				66A1A5C02E17FBE70095FBF8 /* SnapKit in Frameworks */,
+				66A1A5C72E17FE200095FBF8 /* AdaptyUI in Frameworks */,
+				66A1A5C32E17FE200095FBF8 /* Adapty in Frameworks */,
+				66A1A5C52E17FE200095FBF8 /* AdaptyPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +50,7 @@
 		66A1A57F2E17CAE80095FBF8 = {
 			isa = PBXGroup;
 			children = (
-				66A1A58A2E17CAE80095FBF8 /* payapp */,
+				66A1A5B62E17D5BC0095FBF8 /* payapp */,
 				66A1A5892E17CAE80095FBF8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +61,36 @@
 				66A1A5882E17CAE80095FBF8 /* payapp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		66A1A5B62E17D5BC0095FBF8 /* payapp */ = {
+			isa = PBXGroup;
+			children = (
+				66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */,
+				66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */,
+				66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */,
+				66A1A5BB2E17F4A70095FBF8 /* Cells */,
+				66A1A5CE2E1811B50095FBF8 /* Models */,
+				66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */,
+				66A1A5B42E17D5BC0095FBF8 /* Info.plist */,
+			);
+			path = payapp;
+			sourceTree = "<group>";
+		};
+		66A1A5BB2E17F4A70095FBF8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				66A1A5BC2E17F4AE0095FBF8 /* HomeScreenProfileCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		66A1A5CE2E1811B50095FBF8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -73,11 +108,13 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				66A1A58A2E17CAE80095FBF8 /* payapp */,
-			);
 			name = payapp;
 			packageProductDependencies = (
+				66A1A5BF2E17FBE70095FBF8 /* SnapKit */,
+				66A1A5C22E17FE200095FBF8 /* Adapty */,
+				66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */,
+				66A1A5C62E17FE200095FBF8 /* AdaptyUI */,
+				66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */,
 			);
 			productName = payapp;
 			productReference = 66A1A5882E17CAE80095FBF8 /* payapp.app */;
@@ -107,6 +144,10 @@
 			);
 			mainGroup = 66A1A57F2E17CAE80095FBF8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				66A1A5BE2E17FBE70095FBF8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 66A1A5892E17CAE80095FBF8 /* Products */;
 			projectDirPath = "";
@@ -122,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
+				66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */,
+				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
+				66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */,
+				66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +196,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = payapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -160,9 +205,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.georgymetsanurk.payapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -177,8 +226,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = payapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -188,9 +235,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.georgymetsanurk.payapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -337,6 +388,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		66A1A5BE2E17FBE70095FBF8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.7.1;
+			};
+		};
+		66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adaptyteam/AdaptySDK-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		66A1A5BF2E17FBE70095FBF8 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5BE2E17FBE70095FBF8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		66A1A5C22E17FE200095FBF8 /* Adapty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = Adapty;
+		};
+		66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = AdaptyPlugin;
+		};
+		66A1A5C62E17FE200095FBF8 /* AdaptyUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = AdaptyUI;
+		};
+		66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
+			productName = AdaptyUITesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 66A1A5802E17CAE80095FBF8 /* Project object */;
 }
