@@ -69,7 +69,7 @@ extension HomeScreenProfileCell {
     func setupChatButton() {
         let chatBtn = UIButton(type: .system)
         chatBtn.setImage(UIImage(systemName: "message.fill"), for: .normal)
-        setupSettingForCellButtons(for: chatBtn)
+        setupStyleForCellButtons(for: chatBtn)
         contentView.addSubview(chatBtn)
         self.chatButton = chatBtn
     }
@@ -77,7 +77,7 @@ extension HomeScreenProfileCell {
     func setupVideoButton() {
         let videoBtn = UIButton(type: .system)
         videoBtn.setImage(UIImage(systemName: "video.fill"), for: .normal)
-        setupSettingForCellButtons(for: videoBtn)
+        setupStyleForCellButtons(for: videoBtn)
         contentView.addSubview(videoBtn)
         self.videoButton = videoBtn
     }
@@ -85,27 +85,62 @@ extension HomeScreenProfileCell {
     func setupLikeButton() {
         let likeBtn = UIButton(type: .system)
         likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        setupSettingForCellButtons(for: likeBtn)
+        setupStyleForCellButtons(for: likeBtn)
         contentView.addSubview(likeBtn)
         self.likeButton = likeBtn
     }
     
-    func setupSettingForCellButtons(for button: UIButton) {
+    func setupStyleForCellButtons(for button: UIButton) {
         button.backgroundColor = .white
         button.layer.cornerRadius = 14
         button.tintColor = .black
     }
     
     func setupLayout() {
+        arrangeCellPhoto()
+        arrangeNameAgeLabel()
+        arrangeContryLabel()
+        arrangeStatusLabel()
+        arrangeLikeButton()
+    }
+    
+}
+
+extension HomeScreenProfileCell {
+    
+    func arrangeCellPhoto() {
         cellPhotoImageView?.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+    }
+    
+    func arrangeNameAgeLabel() {
         nameAgeLabel?.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(8)
             make.bottom.equalToSuperview().inset(36)
         }
-        
-        
+    }
+    
+    func arrangeContryLabel() {
+        countryLabel?.snp.makeConstraints { make in
+            let refView = nameAgeLabel ?? contentView
+            let refBottom = nameAgeLabel?.snp.bottom ?? contentView.snp.bottom
+            make.leading.equalTo(refView)
+            make.top.equalTo(refBottom).offset(2)
+        }
+    }
+    
+    func arrangeStatusLabel() {
+        statusLabel?.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().inset(8)
+            make.size.equalTo(CGSize(width: 28, height: 28))
+        }
+    }
+    
+    func arrangeLikeButton() {
+        likeButton?.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().inset(8)
+            make.size.equalTo(CGSize(width: 28, height: 28))
+        }
     }
 }
