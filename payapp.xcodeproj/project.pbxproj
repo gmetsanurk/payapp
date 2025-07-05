@@ -19,6 +19,8 @@
 		66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */; };
 		66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */; };
 		66A1A5EB2E1920980095FBF8 /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5EA2E19208F0095FBF8 /* Data.json */; };
+		66A1A5EE2E1929F10095FBF8 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5ED2E1929DF0095FBF8 /* UIColor+Extension.swift */; };
+		66A1A5F02E192CD40095FBF8 /* LocalJSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileHomeCollectionView.swift; sourceTree = "<group>"; };
 		66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		66A1A5EA2E19208F0095FBF8 /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
+		66A1A5ED2E1929DF0095FBF8 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJSONManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +75,11 @@
 				66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */,
 				66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */,
 				66A1A5CA2E1800ED0095FBF8 /* SelectProfileHomeCollectionView.swift */,
+				66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */,
 				66A1A5BB2E17F4A70095FBF8 /* Cells */,
 				66A1A5CE2E1811B50095FBF8 /* Models */,
 				66A1A5E92E191FF10095FBF8 /* Resources */,
+				66A1A5EC2E1929CF0095FBF8 /* Extensions */,
 				66A1A5B42E17D5BC0095FBF8 /* Info.plist */,
 			);
 			path = payapp;
@@ -102,6 +108,14 @@
 				66A1A5EA2E19208F0095FBF8 /* Data.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		66A1A5EC2E1929CF0095FBF8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				66A1A5ED2E1929DF0095FBF8 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,9 +200,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5F02E192CD40095FBF8 /* LocalJSONManager.swift in Sources */,
 				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
 				66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */,
 				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
+				66A1A5EE2E1929F10095FBF8 /* UIColor+Extension.swift in Sources */,
 				66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */,
 				66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */,
 			);

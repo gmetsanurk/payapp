@@ -6,11 +6,15 @@
 //
 import UIKit
 
-struct ProfileModel {
+struct ProfileModel: Codable {
     let name: String
     let age: Int
     let flag: String
     let imageName: String
     let statusText: String
-    let StatusColor: UIColor
+    let statusColorHex: String
+    
+    var statusColor: UIColor {
+        UIColor(hex: statusColorHex) ?? .gray
+    }
 }
