@@ -7,9 +7,10 @@
 
 import UIKit
 
+typealias CellDataType = ProfileModel
 class SelectProfileHomeScreen: UIViewController {
     
-    private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell>?
+    private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ class SelectProfileHomeScreen: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = .init(width: 100, height: 100)
         
-        let profilesList = SelectProfileHomeCollectionView<HomeScreenProfileCell>(frame: .zero, collectionViewLayout: layout)
+        let profilesList = SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>(frame: .zero, collectionViewLayout: layout)
         profilesList.backgroundColor = .red
         view.addSubview(profilesList)
         self.selectProfilesList = profilesList
