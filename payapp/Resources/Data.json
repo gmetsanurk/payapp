@@ -1,0 +1,57 @@
+//
+//  Data.json
+//  payapp
+//
+//  Created by Georgy on 2025-07-05.
+//
+
+[
+  {
+    "name": "Anita",
+    "age": 18,
+    "flag": "🇪🇸",
+    "imageName": "1.jpg",
+    "statusText": "online",
+    "statusColorHex": "#00FF00"
+  },
+  {
+    "name": "Samanta",
+    "age": 25,
+    "flag": "🇪🇸",
+    "imageName": "2.jpg",
+    "statusText": "offline",
+    "statusColorHex": "#888888"
+  },
+  {
+    "name": "Carmen",
+    "age": 32,
+    "flag": "🇪🇸",
+    "imageName": "3.jpg",
+    "statusText": "offline",
+    "statusColorHex": "#888888"
+  },
+  {
+    "name": "Soldead",
+    "age": 23,
+    "flag": "🇪🇸",
+    "imageName": "4.jpg",
+    "statusText": "online",
+    "statusColorHex": "#00FF00"
+  },
+  {
+    "name": "Anne",
+    "age": 24,
+    "flag": "🇪🇸",
+    "imageName": "5.jpg",
+    "statusText": "online",
+    "statusColorHex": "#00FF00"
+  },
+  {
+    "name": "Zali",
+    "age": 30,
+    "flag": "🇪🇸",
+    "imageName": "6.jpg",
+    "statusText": "offline",
+    "statusColorHex": "#888888"
+  }
+]
