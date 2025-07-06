@@ -27,8 +27,7 @@ class HomePresenter {
                 age: $0.age,
                 flag: $0.flag,
                 imageName: $0.imageName ?? "",
-                statusText: $0.statusText ?? "offline",
-                statusColorHex: $0.statusColorHex
+                statusText: $0.statusText ?? "offline"
             )
         }
         view?.displayProfiles(profiles)

@@ -12,9 +12,4 @@ struct ProfileModel: Codable {
     let flag: String?
     let imageName: String?
     let statusText: String?
-    let statusColorHex: String?
-    
-    var statusColor: UIColor? {
-        UIColor(hex: statusColorHex ?? "#888888")
-    }
 }

@@ -15,8 +15,8 @@ protocol CustomizableCell {
 class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
 
     private weak var cellPhotoImageView: UIImageView?
+    private weak var statusImageView: UIImageView?
     private weak var flagNameAgeLabel: UILabel?
-    private weak var statusLabel: UILabel?
     private weak var chatButton: UIButton?
     private weak var videoButton: UIButton?
     private weak var likeButton: UIButton?
@@ -50,15 +50,14 @@ extension HomeScreenProfileCell {
             return
         }
         cellPhotoImageView?.image = UIImage(named: data.imageName ?? "")
+        statusImageView?.image = UIImage(named: data.statusText ?? "offline")
         flagNameAgeLabel?.text = "\(flag) \(name), \(age)"
-        statusLabel?.text = data.statusText
-        statusLabel?.textColor = data.statusColor
     }
     
     func setupUIElements() {
         setupCellPhotoImageView()
+        setupStatusImageView()
         setupFlagNameAgeLabel()
-        setupStatusLabel()
         setupChatButton()
         setupVideoButton()
         setupLikeButton()
@@ -73,19 +72,20 @@ extension HomeScreenProfileCell {
         self.cellPhotoImageView = photo
     }
     
+    func setupStatusImageView() {
+        let photo = UIImageView()
+        photo.contentMode = .scaleAspectFill
+        photo.clipsToBounds = true
+        contentView.addSubview(photo)
+        self.statusImageView = photo
+    }
+    
     func setupFlagNameAgeLabel() {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
         label.textColor = .white
         contentView.addSubview(label)
         self.flagNameAgeLabel = label
-    }
-    
-    func setupStatusLabel() {
-        let status = UILabel()
-        status.font = .systemFont(ofSize: 12)
-        contentView.addSubview(status)
-        self.statusLabel = status
     }
     
     func setupChatButton() {
@@ -127,8 +127,8 @@ extension HomeScreenProfileCell {
     
     func setupLayout() {
         arrangeCellPhoto()
+        arrangeStatus()
         arrangeFlagNameAgeLabel()
-        arrangeStatusLabel()
         arrangeChatButton()
         arrangeVideoButton()
         arrangeLikeButton()
@@ -140,17 +140,16 @@ extension HomeScreenProfileCell {
         }
     }
     
+    func arrangeStatus() {
+        statusImageView?.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().inset(8)
+        }
+    }
+    
     func arrangeFlagNameAgeLabel() {
         flagNameAgeLabel?.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(36)
-        }
-    }
-    
-    func arrangeStatusLabel() {
-        statusLabel?.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(8)
-            make.size.equalTo(CGSize(width: 28, height: 28))
         }
     }
     
