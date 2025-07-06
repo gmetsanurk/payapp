@@ -21,6 +21,7 @@
 		66A1A5EB2E1920980095FBF8 /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5EA2E19208F0095FBF8 /* Data.json */; };
 		66A1A5F02E192CD40095FBF8 /* LocalJSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */; };
 		66A1A5F32E1931950095FBF8 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5F22E1931880095FBF8 /* HomePresenter.swift */; };
+		66A1A5F62E1AB76E0095FBF8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5F52E1AB7680095FBF8 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		66A1A5EA2E19208F0095FBF8 /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
 		66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJSONManager.swift; sourceTree = "<group>"; };
 		66A1A5F22E1931880095FBF8 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		66A1A5F52E1AB7680095FBF8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */,
+				66A1A5F52E1AB7680095FBF8 /* Coordinator.swift */,
 				66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */,
 				66A1A5F42E19332F0095FBF8 /* Views */,
 				66A1A5F12E19316F0095FBF8 /* Presenters */,
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A1A5F62E1AB76E0095FBF8 /* Coordinator.swift in Sources */,
 				66A1A5F02E192CD40095FBF8 /* LocalJSONManager.swift in Sources */,
 				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
 				66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */,
