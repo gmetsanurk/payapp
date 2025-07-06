@@ -15,9 +15,8 @@ protocol CustomizableCell {
 class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
 
     private weak var cellPhotoImageView: UIImageView?
-    private weak var nameAgeLabel: UILabel?
+    private weak var flagNameAgeLabel: UILabel?
     private weak var statusLabel: UILabel?
-    private weak var countryLabel: UILabel?
     private weak var chatButton: UIButton?
     private weak var videoButton: UIButton?
     private weak var likeButton: UIButton?
@@ -34,24 +33,32 @@ class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configure(with data: CellDataType) {
-        guard let name = data.name, let age = data.age else { return }
-        cellPhotoImageView?.image = UIImage(named: data.imageName ?? "")
-        nameAgeLabel?.text = "\(name), \(age)"
-        countryLabel?.text = data.flag
-        statusLabel?.text = data.statusText
-        statusLabel?.textColor = data.statusColor
-    }
 }
 
 extension HomeScreenProfileCell {
     
+    func configure(with data: CellDataType) {
+        guard
+            let name = data.name,
+            let age = data.age,
+            let flag = data.flag
+        else {
+            let displayName = data.name ?? "–"
+            let displayAge  = data.age.map(String.init) ?? "–"
+            let displayFlag = data.flag ?? "-"
+            flagNameAgeLabel?.text = "\(displayFlag) \(displayName), \(displayAge)"
+            return
+        }
+        cellPhotoImageView?.image = UIImage(named: data.imageName ?? "")
+        flagNameAgeLabel?.text = "\(flag) \(name), \(age)"
+        statusLabel?.text = data.statusText
+        statusLabel?.textColor = data.statusColor
+    }
+    
     func setupUIElements() {
         setupCellPhotoImageView()
-        setupNameAgeLabel()
+        setupFlagNameAgeLabel()
         setupStatusLabel()
-        setupContryLabel()
         setupChatButton()
         setupVideoButton()
         setupLikeButton()
@@ -66,10 +73,12 @@ extension HomeScreenProfileCell {
         self.cellPhotoImageView = photo
     }
     
-    func setupNameAgeLabel() {
+    func setupFlagNameAgeLabel() {
         let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = .white
         contentView.addSubview(label)
-        self.nameAgeLabel = label
+        self.flagNameAgeLabel = label
     }
     
     func setupStatusLabel() {
@@ -77,14 +86,6 @@ extension HomeScreenProfileCell {
         status.font = .systemFont(ofSize: 12)
         contentView.addSubview(status)
         self.statusLabel = status
-    }
-    
-    func setupContryLabel() {
-        let countryLbl = UILabel()
-        countryLbl.font = .systemFont(ofSize: 12)
-        countryLbl.textColor = .white
-        contentView.addSubview(countryLbl)
-        self.countryLabel = countryLbl
     }
     
     func setupChatButton() {
@@ -117,19 +118,18 @@ extension HomeScreenProfileCell {
         button.tintColor = .white
     }
     
+}
+
+extension HomeScreenProfileCell {
+    
     func setupLayout() {
         arrangeCellPhoto()
-        arrangeNameAgeLabel()
-        arrangeContryLabel()
+        arrangeFlagNameAgeLabel()
         arrangeStatusLabel()
         arrangeChatButton()
         arrangeVideoButton()
         arrangeLikeButton()
     }
-    
-}
-
-extension HomeScreenProfileCell {
     
     func arrangeCellPhoto() {
         cellPhotoImageView?.snp.makeConstraints { make in
@@ -137,19 +137,10 @@ extension HomeScreenProfileCell {
         }
     }
     
-    func arrangeNameAgeLabel() {
-        nameAgeLabel?.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(8)
+    func arrangeFlagNameAgeLabel() {
+        flagNameAgeLabel?.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(36)
-        }
-    }
-    
-    func arrangeContryLabel() {
-        countryLabel?.snp.makeConstraints { make in
-            let refView = nameAgeLabel ?? contentView
-            let refBottom = nameAgeLabel?.snp.bottom ?? contentView.snp.bottom
-            make.leading.equalTo(refView)
-            make.top.equalTo(refBottom).offset(2)
         }
     }
     
