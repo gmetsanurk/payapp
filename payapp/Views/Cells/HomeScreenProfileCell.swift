@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 protocol CustomizableCell {
-    
+    func setup(with: Any)
 }
 
-class HomeScreenProfileCell: UICollectionViewCell {
+class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
     
     private weak var cellPhotoImageView: UIImageView?
     private weak var nameAgeLabel: UILabel?
@@ -32,6 +32,10 @@ class HomeScreenProfileCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup(with: Any) {
+        
     }
 }
 

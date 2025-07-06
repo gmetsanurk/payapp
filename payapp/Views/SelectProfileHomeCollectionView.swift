@@ -8,7 +8,9 @@
 import UIKit
 import SnapKit
 
-class SelectProfileHomeCollectionView<CellType: UICollectionViewCell, DataType>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
+typealias HomeCollectionViewDataHandler = (Any) -> Void
+
+class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & CustomizableCell, DataType>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var data: [DataType] = [] {
         didSet {
@@ -18,6 +20,7 @@ class SelectProfileHomeCollectionView<CellType: UICollectionViewCell, DataType>:
         }
     }
     
+    private var handler: HomeCollectionViewDataHandler?
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
 
@@ -31,15 +34,13 @@ class SelectProfileHomeCollectionView<CellType: UICollectionViewCell, DataType>:
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
-        //return data.count
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        //(cell as? CustomizableCell)?.setup(with: data[indexPath.item])
+        (cell as? CustomizableCell)?.setup(with: data[indexPath.item])
         return cell
     }
-    
     
 }

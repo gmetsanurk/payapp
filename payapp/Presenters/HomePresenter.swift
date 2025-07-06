@@ -6,10 +6,15 @@
 //
 
 class HomePresenter {
-    var profiles: [ProfileModel] = []
-    private let jsonManager: JSONLoading = LocalJSONManager()
+    private weak var view: SelectProfileHomeScreen?
+    private let jsonService: JSONLoading
     
-    func handleLoadProfiles() {
-        profiles = jsonManager.loadProfiles()
+    init(view: SelectProfileHomeScreen,
+         jsonService: JSONLoading = LocalJSONManager()) {
+        self.view = view
+        self.jsonService = jsonService
     }
+    
+    
+    
 }
