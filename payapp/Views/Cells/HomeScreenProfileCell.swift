@@ -36,8 +36,9 @@ class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
     }
     
     func configure(with data: CellDataType) {
+        guard let name = data.name, let age = data.age else { return }
         cellPhotoImageView?.image = UIImage(named: data.imageName ?? "")
-        nameAgeLabel?.text = "\(data.name), \(data.age)"
+        nameAgeLabel?.text = "\(name), \(age)"
         countryLabel?.text = data.flag
         statusLabel?.text = data.statusText
         statusLabel?.textColor = data.statusColor
@@ -60,6 +61,7 @@ extension HomeScreenProfileCell {
         let photo = UIImageView()
         photo.contentMode = .scaleAspectFill
         photo.clipsToBounds = true
+        photo.layer.cornerRadius = 15
         contentView.addSubview(photo)
         self.cellPhotoImageView = photo
     }
@@ -110,9 +112,9 @@ extension HomeScreenProfileCell {
     }
     
     func setupStyleForCellButtons(for button: UIButton) {
-        button.backgroundColor = .white
+        button.backgroundColor = .clear
         button.layer.cornerRadius = 14
-        button.tintColor = .black
+        button.tintColor = .white
     }
     
     func setupLayout() {
@@ -159,11 +161,18 @@ extension HomeScreenProfileCell {
     }
     
     func arrangeChatButton() {
-        
+        chatButton?.snp.makeConstraints { make in
+            make.leading.bottom.equalToSuperview().inset(8)
+            make.size.equalTo(CGSize(width: 28, height: 28))
+        }
     }
     
     func arrangeVideoButton() {
-        
+        videoButton?.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(8)
+            make.size.equalTo(CGSize(width: 28, height: 28))
+        }
     }
     
     func arrangeLikeButton() {

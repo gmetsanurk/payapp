@@ -19,10 +19,12 @@ class SelectProfileHomeScreen: UIViewController {
         view.backgroundColor = .yellow
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: 100, height: 100)
+        layout.estimatedItemSize = .init(width: view.bounds.width - 32, height: 200)
+        layout.minimumLineSpacing = 16
+        layout.sectionInset = .init(top: 16, left: 16, bottom: 16, right: 16)
         
         let profilesList = SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>(frame: .zero, collectionViewLayout: layout)
-        profilesList.backgroundColor = .red
+        profilesList.backgroundColor = .white
         view.addSubview(profilesList)
         self.selectProfilesList = profilesList
         profilesList.snp.makeConstraints { make in
