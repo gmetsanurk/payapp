@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Anita",
+    "age": 18,
+    "flag": "🇪🇸",
+    "imageName": "1",
+    "statusText": "online",
+  },
+  {
+    "name": "Samanta",
+    "age": 25,
+    "flag": "🇪🇸",
+    "imageName": "2",
+    "statusText": "offline",
+  },
+  {
+    "name": "Carmen",
+    "age": 32,
+    "flag": "🇪🇸",
+    "imageName": "3",
+    "statusText": "recently",
+  },
+  {
+    "name": "Soldead",
+    "age": 23,
+    "flag": "🇪🇸",
+    "imageName": "4",
+    "statusText": "online",
+  },
+  {
+    "name": "Anne",
+    "age": 24,
+    "flag": "🇪🇸",
+    "imageName": "5",
+    "statusText": "online",
+  },
+  {
+    "name": "Zali",
+    "age": 30,
+    "flag": "🇪🇸",
+    "imageName": "6",
+    "statusText": "offline",
+  }
+]
