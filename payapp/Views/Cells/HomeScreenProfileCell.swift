@@ -9,11 +9,11 @@ import UIKit
 import SnapKit
 
 protocol CustomizableCell {
-    func setup(with: Any)
+    func configure(with data: CellDataType)
 }
 
 class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
-    
+
     private weak var cellPhotoImageView: UIImageView?
     private weak var nameAgeLabel: UILabel?
     private weak var statusLabel: UILabel?
@@ -35,8 +35,12 @@ class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(with: Any) {
-        
+    func configure(with data: CellDataType) {
+        cellPhotoImageView?.image = UIImage(named: data.imageName ?? "")
+        nameAgeLabel?.text = "\(data.name), \(data.age)"
+        countryLabel?.text = data.flag
+        statusLabel?.text = data.statusText
+        statusLabel?.textColor = data.statusColor
     }
 }
 
@@ -48,6 +52,7 @@ extension HomeScreenProfileCell {
         setupStatusLabel()
         setupContryLabel()
         setupChatButton()
+        setupVideoButton()
         setupLikeButton()
     }
     
@@ -115,6 +120,8 @@ extension HomeScreenProfileCell {
         arrangeNameAgeLabel()
         arrangeContryLabel()
         arrangeStatusLabel()
+        arrangeChatButton()
+        arrangeVideoButton()
         arrangeLikeButton()
     }
     
@@ -149,6 +156,14 @@ extension HomeScreenProfileCell {
             make.top.leading.equalToSuperview().inset(8)
             make.size.equalTo(CGSize(width: 28, height: 28))
         }
+    }
+    
+    func arrangeChatButton() {
+        
+    }
+    
+    func arrangeVideoButton() {
+        
     }
     
     func arrangeLikeButton() {

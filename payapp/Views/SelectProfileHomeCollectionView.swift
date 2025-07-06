@@ -39,7 +39,7 @@ class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & Customiza
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        (cell as? CustomizableCell)?.setup(with: data[indexPath.item])
+        (cell as? CustomizableCell)?.configure(with: data[indexPath.item] as! CellDataType)
         return cell
     }
     
