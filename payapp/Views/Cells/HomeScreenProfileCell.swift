@@ -90,7 +90,8 @@ extension HomeScreenProfileCell {
     
     func setupChatButton() {
         let chatBtn = UIButton(type: .system)
-        chatBtn.setImage(UIImage(systemName: "message.fill"), for: .normal)
+        let image = UIImage(named: "chat-label")?.withRenderingMode(.alwaysOriginal)
+        chatBtn.setImage(image, for: .normal)
         setupStyleForCellButtons(for: chatBtn)
         contentView.addSubview(chatBtn)
         self.chatButton = chatBtn
@@ -98,7 +99,8 @@ extension HomeScreenProfileCell {
     
     func setupVideoButton() {
         let videoBtn = UIButton(type: .system)
-        videoBtn.setImage(UIImage(systemName: "video.fill"), for: .normal)
+        let image = UIImage(named: "btn-live")?.withRenderingMode(.alwaysOriginal)
+        videoBtn.setImage(image, for: .normal)
         setupStyleForCellButtons(for: videoBtn)
         contentView.addSubview(videoBtn)
         self.videoButton = videoBtn
@@ -106,7 +108,8 @@ extension HomeScreenProfileCell {
     
     func setupLikeButton() {
         let likeBtn = UIButton(type: .system)
-        likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        let image = UIImage(named: "favorite-1")?.withRenderingMode(.alwaysOriginal)
+        likeBtn.setImage(image, for: .normal)
         setupStyleForCellButtons(for: likeBtn)
         contentView.addSubview(likeBtn)
         self.likeButton = likeBtn
