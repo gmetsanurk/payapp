@@ -27,7 +27,8 @@ class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
         
         backgroundColor = UIColor.white
         
-        setupNameAgeLabel()
+        setupUIElements()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -40,6 +41,15 @@ class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
 }
 
 extension HomeScreenProfileCell {
+    
+    func setupUIElements() {
+        setupCellPhotoImageView()
+        setupNameAgeLabel()
+        setupStatusLabel()
+        setupContryLabel()
+        setupChatButton()
+        setupLikeButton()
+    }
     
     func setupCellPhotoImageView() {
         let photo = UIImageView()

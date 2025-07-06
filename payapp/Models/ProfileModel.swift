@@ -7,14 +7,14 @@
 import UIKit
 
 struct ProfileModel: Codable {
-    let name: String
-    let age: Int
-    let flag: String
-    let imageName: String
-    let statusText: String
-    let statusColorHex: String
+    let name: String?
+    let age: Int?
+    let flag: String?
+    let imageName: String?
+    let statusText: String?
+    let statusColorHex: String?
     
-    var statusColor: UIColor {
-        UIColor(hex: statusColorHex) ?? .gray
+    var statusColor: UIColor? {
+        UIColor(hex: statusColorHex ?? "#888888")
     }
 }

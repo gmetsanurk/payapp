@@ -11,6 +11,8 @@ typealias CellDataType = ProfileModel
 class SelectProfileHomeScreen: UIViewController {
     
     private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>?
+    
+    private lazy var presenter = HomePresenter(view: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,13 @@ class SelectProfileHomeScreen: UIViewController {
         profilesList.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+        DispatchQueue.main.async { [weak self] in
+            self?.presenter.loadProfiles()
+        }
+    }
+    
+    func displayProfiles(_ profiles: [CellDataType]) {
+        selectProfilesList?.data = profiles
     }
 
 }

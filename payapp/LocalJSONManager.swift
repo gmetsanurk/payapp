@@ -27,7 +27,7 @@ struct LocalJSONManager: JSONLoading {
         do {
             return try JSONDecoder().decode([ProfileModel].self, from: data)
         } catch {
-            print("Error on JSON decoding")
+            print("Error on JSON decoding", error)
             return []
         }
     }
