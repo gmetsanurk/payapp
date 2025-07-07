@@ -4,8 +4,16 @@
 //
 //  Created by Georgy on 2025-07-05.
 //
+import UIKit
+
 protocol AnyScreen {
-    func present(screen: AnyScreen)
+    func present(screen: UIViewController)
+}
+
+extension AnyScreen where Self: UIViewController {
+    func presentController(screen: UIViewController) {
+        present(screen, animated: true)
+    }
 }
 
 class HomePresenter {
@@ -31,5 +39,12 @@ class HomePresenter {
             )
         }
         view?.displayProfiles(profiles)
+    }
+    
+    func handleSelect() {
+        let coordinator = dependencies.resolve(Coordinator.self)
+        coordinator?.openPaywallScreen(onCellSelected: { [weak self] in
+            coordinator?.start()
+        })
     }
 }

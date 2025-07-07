@@ -8,7 +8,11 @@
 import UIKit
 import SnapKit
 
-typealias HomeCollectionViewDataHandler = (Any) -> Void
+protocol CollectionViewSelectDelegate: AnyObject {
+    func onSelected()
+}
+
+typealias HomeCollectionViewDataHandler = () -> Void
 
 class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & CustomizableCell, DataType>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -21,8 +25,9 @@ class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & Customiza
     }
     
     private var handler: HomeCollectionViewDataHandler?
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout, handler: SelectCellScreenHandler?) {
         super.init(frame: frame, collectionViewLayout: layout)
+        self.handler = handler
 
         register(CellType.self, forCellWithReuseIdentifier: "cell")
         dataSource = self
@@ -43,4 +48,7 @@ class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & Customiza
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        handler?()
+    }
 }
