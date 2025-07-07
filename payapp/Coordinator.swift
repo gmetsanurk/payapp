@@ -8,7 +8,7 @@ import UIKit
 
 protocol Coordinator {
     func start()
-    func openPaywallScreen(onCellSelected: SelectCellScreenHandler?)
+    func openPaywallScreen(onCellSelected: @escaping SelectCellScreenHandler)
 }
 struct UIKitCoordinator: Coordinator {
     unowned var window: UIWindow
@@ -26,8 +26,9 @@ struct UIKitCoordinator: Coordinator {
         }
     }
     
-    func openPaywallScreen(onCellSelected: SelectCellScreenHandler?) {
+    func openPaywallScreen(onCellSelected: @escaping SelectCellScreenHandler) {
         let payWallScreen = PaywallScreen()
+        payWallScreen.onCellSelected = onCellSelected
         if let homeView = window.rootViewController as? AnyScreen{
             homeView.present(screen: payWallScreen)
         } else if window.rootViewController == nil {

@@ -41,7 +41,7 @@ class SelectProfileHomeScreen: UIViewController {
 
 extension SelectProfileHomeScreen: SelectPaywallScreenDelegate {
     func onCellSelected() {
-        
+        presenter.handleSelect()
     }
     
 }

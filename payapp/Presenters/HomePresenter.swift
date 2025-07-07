@@ -11,7 +11,7 @@ protocol AnyScreen {
 }
 
 extension AnyScreen where Self: UIViewController {
-    func presentController(screen: AnyScreen & UIViewController) {
+    func presentController(screen: UIViewController) {
         present(screen, animated: true)
     }
 }
@@ -41,10 +41,10 @@ class HomePresenter {
         view?.displayProfiles(profiles)
     }
     
-    /*private func handleSelect() async {
-        let coordinator = UIKitCoordinator()
+    func handleSelect() {
+        let coordinator = dependencies.resolve(Coordinator.self)
         coordinator?.openPaywallScreen(onCellSelected: { [weak self] in
-            self?.openPaywallScreen(onCellSelected: nil)
+            coordinator?.start()
         })
-    }*/
+    }
 }

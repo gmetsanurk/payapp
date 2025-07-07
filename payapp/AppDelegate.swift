@@ -9,7 +9,7 @@ import UIKit
 import Adapty
 import Swinject
 
-actor Dependencies {
+struct Dependencies {
     let container = {
         let container = Container()
         return container
