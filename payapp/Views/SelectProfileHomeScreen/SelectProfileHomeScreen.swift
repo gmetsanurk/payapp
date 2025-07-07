@@ -40,14 +40,11 @@ class SelectProfileHomeScreen: UIViewController {
         selectProfilesList?.data = profiles
     }
     
-}
-
-extension SelectProfileHomeScreen: SelectPaywallScreenDelegate {
     func onCellSelected() {
         viewModel.handleSelect()
     }
-    
 }
+
 extension SelectProfileHomeScreen {
     func setupUI() {
         setupHeaderView()

@@ -5,11 +5,7 @@
 //  Created by Georgy on 2025-07-07.
 //
 import UIKit
-
-@MainActor
-protocol SelectPaywallScreenDelegate: AnyObject {
-    func onCellSelected()
-}
+import Adapty
 
 typealias SelectCellScreenHandler = () -> Void
 
@@ -23,12 +19,6 @@ class PaywallScreen: UIViewController {
     }
 }
 
-extension PaywallScreen: CollectionViewSelectDelegate {
-    func onSelected() {
-        
-    }
-    
-}
 extension PaywallScreen: AnyScreen {
     func present(screen: UIViewController) {}
 }

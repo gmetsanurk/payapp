@@ -8,11 +8,6 @@
 import UIKit
 import SnapKit
 
-@MainActor
-protocol CollectionViewSelectDelegate: AnyObject {
-    func onSelected()
-}
-
 typealias HomeCollectionViewDataHandler = () -> Void
 
 class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & CustomizableCell, DataType>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
