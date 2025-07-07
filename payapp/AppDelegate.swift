@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Adapty
+
+
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +19,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
+        //Adapty.activate("public_live_XcszhjPr.4kS0P09Oj0L61jrl7Iu3")
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
 
@@ -25,5 +29,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
 }
 
