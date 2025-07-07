@@ -8,12 +8,16 @@
 import UIKit
 
 typealias CellDataType = ProfileModel
+typealias SelectCellScreenHandler = () -> Void
+
 class SelectProfileHomeScreen: UIViewController {
     
     private let headerView = UIView()
     private let titleLabel = UILabel()
     private let coinsButton = UIButton(type: .custom)
     private var segmentedControl = UISegmentedControl()
+    
+    var onCellSelected: SelectCellScreenHandler?
     
     private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>?
     

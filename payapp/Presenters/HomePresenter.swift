@@ -4,8 +4,16 @@
 //
 //  Created by Georgy on 2025-07-05.
 //
+import UIKit
+
 protocol AnyScreen {
     func present(screen: AnyScreen)
+}
+
+extension AnyScreen where Self: UIViewController {
+    func presentController(screen: AnyScreen & UIViewController) {
+        present(screen, animated: true)
+    }
 }
 
 class HomePresenter {
