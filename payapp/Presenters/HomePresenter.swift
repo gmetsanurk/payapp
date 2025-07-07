@@ -7,7 +7,7 @@
 import UIKit
 
 protocol AnyScreen {
-    func present(screen: AnyScreen)
+    func present(screen: UIViewController)
 }
 
 extension AnyScreen where Self: UIViewController {
@@ -40,4 +40,11 @@ class HomePresenter {
         }
         view?.displayProfiles(profiles)
     }
+    
+    /*private func handleSelect() async {
+        let coordinator = UIKitCoordinator()
+        coordinator?.openPaywallScreen(onCellSelected: { [weak self] in
+            self?.openPaywallScreen(onCellSelected: nil)
+        })
+    }*/
 }

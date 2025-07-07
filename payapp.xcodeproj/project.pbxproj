@@ -24,6 +24,7 @@
 		66A1A5F62E1AB76E0095FBF8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5F52E1AB7680095FBF8 /* Coordinator.swift */; };
 		66A1A5F82E1BA9A10095FBF8 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5F72E1BA9A10095FBF8 /* Configuration.storekit */; };
 		66A1A5FC2E1BB2E30095FBF8 /* PaywallScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5FB2E1BB2D80095FBF8 /* PaywallScreen.swift */; };
+		66A1A5FF2E1BCA2B0095FBF8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5FE2E1BCA2B0095FBF8 /* Swinject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 				66A1A5C72E17FE200095FBF8 /* AdaptyUI in Frameworks */,
 				66A1A5C32E17FE200095FBF8 /* Adapty in Frameworks */,
 				66A1A5C52E17FE200095FBF8 /* AdaptyPlugin in Frameworks */,
+				66A1A5FF2E1BCA2B0095FBF8 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +167,7 @@
 				66A1A5C42E17FE200095FBF8 /* AdaptyPlugin */,
 				66A1A5C62E17FE200095FBF8 /* AdaptyUI */,
 				66A1A5C82E17FE200095FBF8 /* AdaptyUITesting */,
+				66A1A5FE2E1BCA2B0095FBF8 /* Swinject */,
 			);
 			productName = payapp;
 			productReference = 66A1A5882E17CAE80095FBF8 /* payapp.app */;
@@ -197,6 +200,7 @@
 			packageReferences = (
 				66A1A5BE2E17FBE70095FBF8 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */,
+				66A1A5FD2E1BCA2B0095FBF8 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 66A1A5892E17CAE80095FBF8 /* Products */;
@@ -462,6 +466,14 @@
 				minimumVersion = 3.8.2;
 			};
 		};
+		66A1A5FD2E1BCA2B0095FBF8 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = exactVersion;
+				version = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -489,6 +501,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66A1A5C12E17FE200095FBF8 /* XCRemoteSwiftPackageReference "AdaptySDK-iOS" */;
 			productName = AdaptyUITesting;
+		};
+		66A1A5FE2E1BCA2B0095FBF8 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A1A5FD2E1BCA2B0095FBF8 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

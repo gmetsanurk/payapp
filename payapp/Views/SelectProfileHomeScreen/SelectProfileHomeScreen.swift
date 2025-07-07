@@ -8,7 +8,6 @@
 import UIKit
 
 typealias CellDataType = ProfileModel
-typealias SelectCellScreenHandler = () -> Void
 
 class SelectProfileHomeScreen: UIViewController {
     
@@ -16,8 +15,6 @@ class SelectProfileHomeScreen: UIViewController {
     private let titleLabel = UILabel()
     private let coinsButton = UIButton(type: .custom)
     private var segmentedControl = UISegmentedControl()
-    
-    var onCellSelected: SelectCellScreenHandler?
     
     private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>?
     
@@ -42,6 +39,12 @@ class SelectProfileHomeScreen: UIViewController {
     
 }
 
+extension SelectProfileHomeScreen: SelectPaywallScreenDelegate {
+    func onCellSelected() {
+        
+    }
+    
+}
 extension SelectProfileHomeScreen {
     func setupUI() {
         setupHeaderView()
@@ -60,7 +63,12 @@ extension SelectProfileHomeScreen {
         layout.minimumLineSpacing = 16
         layout.sectionInset = .init(top: 16, left: 16, bottom: 16, right: 16)
         
-        let profilesList = SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>(frame: .zero, collectionViewLayout: layout)
+        let profilesList = SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>(
+            frame: .zero, collectionViewLayout: layout,
+            handler: {
+            [unowned self] in
+                onCellSelected()
+        })
         profilesList.backgroundColor = .white
         view.addSubview(profilesList)
         self.selectProfilesList = profilesList
