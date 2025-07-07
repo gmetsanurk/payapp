@@ -6,6 +6,7 @@
 //
 import UIKit
 
+@MainActor
 protocol SelectPaywallScreenDelegate: AnyObject {
     func onCellSelected()
 }
@@ -27,4 +28,7 @@ extension PaywallScreen: CollectionViewSelectDelegate {
         
     }
     
+}
+extension PaywallScreen: AnyScreen {
+    func present(screen: UIViewController) {}
 }

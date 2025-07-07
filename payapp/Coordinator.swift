@@ -6,35 +6,47 @@
 //
 import UIKit
 
-protocol Coordinator {
-    func start()
-    func openPaywallScreen(onCellSelected: @escaping SelectCellScreenHandler)
+protocol Coordinator: Actor {
+    @MainActor
+    func start() async
+    @MainActor
+    func openPaywallScreen() async
+    func openOnline()
+    func openPopular()
 }
-struct UIKitCoordinator: Coordinator {
+
+extension Coordinator {
+    func openOnline() { }
+    func openPopular() { }
+}
+
+actor UIKitCoordinator: Coordinator {
     unowned var window: UIWindow
     
     init(window: UIWindow) {
         self.window = window
     }
     
-    func start() {
-        if let someScreen = window.rootViewController, let presentedViewController = someScreen.presentedViewController as? PaywallScreen {
-            presentedViewController.dismiss(animated: true)
-        } else {
-            window.rootViewController = SelectProfileHomeScreen()
-            window.makeKeyAndVisible()
-        }
+    @MainActor
+    func start() async {
+        if let someScreen = await window.rootViewController, let presentedViewController = someScreen.presentedViewController as? PaywallScreen {
+                presentedViewController.dismiss(animated: true)
+            } else {
+                await window.rootViewController = SelectProfileHomeScreen()
+                await window.makeKeyAndVisible()
+            }
     }
     
-    func openPaywallScreen(onCellSelected: @escaping SelectCellScreenHandler) {
+    @MainActor
+    func openPaywallScreen() async {
         let payWallScreen = PaywallScreen()
-        payWallScreen.onCellSelected = onCellSelected
-        if let homeView = window.rootViewController as? AnyScreen{
+        // payWallScreen.onCellSelected = onCellSelected
+        if let homeView = await window.rootViewController as? AnyScreen{
             homeView.present(screen: payWallScreen)
-        } else if window.rootViewController == nil {
-            window.rootViewController = SelectProfileHomeScreen()
-            window.makeKeyAndVisible()
-            (window.rootViewController as? AnyScreen)?.present(screen: payWallScreen)
+        } else if await window.rootViewController == nil {
+            await window.rootViewController = SelectProfileHomeScreen()
+            await window.makeKeyAndVisible()
+            await (window.rootViewController as? AnyScreen)?.present(screen: payWallScreen)
         }
     }
 }

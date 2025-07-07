@@ -9,17 +9,17 @@ import UIKit
 import SnapKit
 
 protocol CustomizableCell {
-    func configure(with data: CellDataType)
+    @MainActor
+    func configure(with data: CellDataType) async
 }
 
 class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
-
-    private weak var cellPhotoImageView: UIImageView?
-    private weak var statusImageView: UIImageView?
-    private weak var flagNameAgeLabel: UILabel?
-    private weak var chatButton: UIButton?
-    private weak var videoButton: UIButton?
-    private weak var likeButton: UIButton?
+    private unowned var cellPhotoImageView: UIImageView!
+    private unowned var statusImageView: UIImageView!
+    private unowned var flagNameAgeLabel: UILabel!
+    private unowned var chatButton: UIButton!
+    private unowned var videoButton: UIButton!
+    private unowned var likeButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,8 +36,8 @@ class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
 }
 
 extension HomeScreenProfileCell {
-    
-    func configure(with data: CellDataType) {
+    @MainActor
+    func configure(with data: CellDataType) async {
         guard
             let name = data.name,
             let age = data.age,
@@ -49,9 +49,9 @@ extension HomeScreenProfileCell {
             flagNameAgeLabel?.text = "\(displayFlag) \(displayName), \(displayAge)"
             return
         }
-        cellPhotoImageView?.image = UIImage(named: data.imageName ?? "")
-        statusImageView?.image = UIImage(named: data.statusText ?? "offline")
-        flagNameAgeLabel?.text = "\(flag) \(name), \(age)"
+        cellPhotoImageView.image = UIImage(named: data.imageName ?? "")
+        statusImageView.image = UIImage(named: data.statusText ?? "offline")
+        flagNameAgeLabel.text = "\(flag) \(name), \(age)"
     }
     
     func setupUIElements() {
@@ -88,6 +88,7 @@ extension HomeScreenProfileCell {
         self.flagNameAgeLabel = label
     }
     
+    // Refactor these 2 functions into 1
     func setupChatButton() {
         let chatBtn = UIButton(type: .system)
         let image = UIImage(named: "chat-label")?.withRenderingMode(.alwaysOriginal)
@@ -135,33 +136,33 @@ extension HomeScreenProfileCell {
     }
     
     func arrangeCellPhoto() {
-        cellPhotoImageView?.snp.makeConstraints { make in
+        cellPhotoImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
     func arrangeStatus() {
-        statusImageView?.snp.makeConstraints { make in
+        statusImageView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(8)
         }
     }
     
     func arrangeFlagNameAgeLabel() {
-        flagNameAgeLabel?.snp.makeConstraints { make in
+        flagNameAgeLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(36)
         }
     }
     
     func arrangeChatButton() {
-        chatButton?.snp.makeConstraints { make in
+        chatButton.snp.makeConstraints { make in
             make.leading.bottom.equalToSuperview().inset(8)
             make.size.equalTo(CGSize(width: 28, height: 28))
         }
     }
     
     func arrangeVideoButton() {
-        videoButton?.snp.makeConstraints { make in
+        videoButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(8)
             make.size.equalTo(CGSize(width: 28, height: 28))
@@ -169,7 +170,7 @@ extension HomeScreenProfileCell {
     }
     
     func arrangeLikeButton() {
-        likeButton?.snp.makeConstraints { make in
+        likeButton.snp.makeConstraints { make in
             make.trailing.bottom.equalToSuperview().inset(8)
             make.size.equalTo(CGSize(width: 28, height: 28))
         }
