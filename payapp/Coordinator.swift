@@ -4,6 +4,7 @@
 //
 //  Created by Georgy on 2025-07-06.
 //
+
 import UIKit
 
 protocol Coordinator: Actor {
@@ -40,7 +41,6 @@ actor UIKitCoordinator: Coordinator {
     @MainActor
     func openPaywallScreen() async {
         let payWallScreen = PaywallScreen()
-        // payWallScreen.onCellSelected = onCellSelected
         if let homeView = await window.rootViewController as? AnyScreen{
             homeView.present(screen: payWallScreen)
         } else if await window.rootViewController == nil {

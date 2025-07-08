@@ -18,6 +18,8 @@
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
     "_storeKitErrors" : [
       {
         "current" : null,
@@ -95,35 +97,7 @@
           ],
           "productID" : "01",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Premium Monthly",
-          "subscriptionGroupID" : "7111C367",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "0.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "9DEF13D8",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "",
-              "displayName" : "",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "02",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Premium Yearly",
+          "referenceName" : "Premium",
           "subscriptionGroupID" : "7111C367",
           "type" : "RecurringSubscription",
           "winbackOffers" : [
