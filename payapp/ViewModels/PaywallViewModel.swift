@@ -18,7 +18,6 @@ final class PaywallViewModel: NSObject, ObservableObject, AdaptyDelegate {
     private let placementId = "HERE_YOUR_ID"
     
     @Published var profile: AdaptyProfile?
-    //@Published var getProfileInProgress = false
     
     @Published var isLoading = false
     @Published var premiumProduct: AdaptyPaywallProduct?
@@ -26,14 +25,11 @@ final class PaywallViewModel: NSObject, ObservableObject, AdaptyDelegate {
     override init() {
         super.init()
         
-        //userId = UserManager.currentUserId
-        
         Adapty.delegate = self
         Task {
             await reloadProfile()
         }
     }
-    
     
     @MainActor
     func reloadProfile() async {
@@ -60,14 +56,25 @@ final class PaywallViewModel: NSObject, ObservableObject, AdaptyDelegate {
     }
     
     @MainActor
-    func purchase(product: AdaptyPaywallProduct) async throws -> AdaptyPurchaseResult {
-      return try await Adapty.makePurchase(product: product)
+    func purchase(product: AdaptyPaywallProduct) async -> AdaptyPurchaseResult? {
+        guard let product = premiumProduct else { return nil }
+        do {
+            let result = try await Adapty.makePurchase(product: product)
+            return result
+        } catch {
+            print("Make purchase failed", error)
+            return nil
+        }
     }
     
     // MARK: AdaptyDelegate
     
     func didLoadLatestProfile(_ profile: AdaptyProfile) {
-        self.profile = profile
+        Task {
+            await MainActor.run {
+                self.profile = profile
+            }
+        }
     }
 }
 
