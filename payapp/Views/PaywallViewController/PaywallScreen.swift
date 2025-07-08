@@ -6,17 +6,21 @@
 //
 import UIKit
 import Adapty
+import AdaptyUI
 
 typealias SelectCellScreenHandler = () -> Void
 
 class PaywallScreen: UIViewController {
     
-    var onCellSelected: SelectCellScreenHandler?
+    private var paywall: AdaptyPaywall!
+    private var products: [AdaptyPaywallProduct] = []
+    private unowned var subscriveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
+    
 }
 
 extension PaywallScreen: AnyScreen {

@@ -7,6 +7,7 @@
 
 import UIKit
 import Adapty
+import AdaptyUI
 import Swinject
 
 actor Dependencies {
@@ -28,7 +29,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        //Adapty.activate("public_live_XcszhjPr.4kS0P09Oj0L61jrl7Iu3")
+        let configuration = AdaptyConfiguration
+            .builder(withAPIKey: AppConstants.adaptyApiKey)
+            .with(customerUserId: UserManager.currentUserId)
+            .build()
+
+        Adapty.delegate = MainViewModel()
+        Adapty.logLevel = .verbose
+        Adapty.activate(with: configuration)
+
+        if #available(iOS 15.0, *) {
+            AdaptyUI.activate()
+        }
+        
         setupWindow()
         return true
     }
