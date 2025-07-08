@@ -7,6 +7,7 @@
 import UIKit
 import Adapty
 import AdaptyUI
+import SnapKit
 
 typealias SelectCellScreenHandler = () -> Void
 
@@ -19,6 +20,8 @@ class PaywallScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        createButton()
+        setupUI()
         
         Task {
             await viewModel.reloadProfile()
@@ -64,6 +67,15 @@ extension PaywallScreen {
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
       alert.addAction(.init(title: "OK", style: .default))
       present(alert, animated: true)
+    }
+    
+    private func setupUI() {
+        view.addSubview(subscribeButton)
+        
+        subscribeButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
     }
 }
 
