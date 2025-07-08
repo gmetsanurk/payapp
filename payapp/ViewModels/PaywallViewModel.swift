@@ -15,7 +15,7 @@ final class PaywallViewModel: NSObject, ObservableObject, AdaptyDelegate {
     
     var isPremiumUser: Bool { profile?.accessLevels[AppConstants.accessLevelId]?.isActive ?? false }
     
-    private let placementId = "HERE_YOUR_ID"
+    private let placementId = AppConstants.placementId
     
     @Published var profile: AdaptyProfile?
     
@@ -49,6 +49,7 @@ final class PaywallViewModel: NSObject, ObservableObject, AdaptyDelegate {
             let pw = try await Adapty.getPaywall(placementId: placementId)
             let items = try await Adapty.getPaywallProducts(paywall: pw)
             premiumProduct = items.first
+            print("Loaded premiumProduct:", premiumProduct?.vendorProductId ?? "none")
         } catch {
             print("loadPaywall failed:", error)
         }

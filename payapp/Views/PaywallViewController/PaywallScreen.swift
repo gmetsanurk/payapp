@@ -4,6 +4,7 @@
 //
 //  Created by Georgy on 2025-07-07.
 //
+
 import UIKit
 import Adapty
 import AdaptyUI
