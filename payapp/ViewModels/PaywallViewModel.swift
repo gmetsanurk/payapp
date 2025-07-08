@@ -56,7 +56,7 @@ final class PaywallViewModel: NSObject, ObservableObject, AdaptyDelegate {
     }
     
     @MainActor
-    func purchase(product: AdaptyPaywallProduct) async -> AdaptyPurchaseResult? {
+    func purchase() async -> AdaptyPurchaseResult? {
         guard let product = premiumProduct else { return nil }
         do {
             let result = try await Adapty.makePurchase(product: product)

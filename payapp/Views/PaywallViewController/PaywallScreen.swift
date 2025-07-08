@@ -13,13 +13,17 @@ typealias SelectCellScreenHandler = () -> Void
 class PaywallScreen: UIViewController {
     
     private let viewModel = PaywallViewModel.shared
-    private var paywall: AdaptyPaywall!
-    private var premiumProduct: AdaptyPaywallProduct?
-    private unowned var subscribeButton: UIButton!
+    
+    private var subscribeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        Task {
+            await viewModel.reloadProfile()
+            await viewModel.loadPaywall()
+        }
     }
     
 }
@@ -27,6 +31,7 @@ class PaywallScreen: UIViewController {
 extension PaywallScreen {
     
     func createButton() {
+        subscribeButton = UIButton(type: .system)
         subscribeButton.setTitle("Subscribe", for: .normal)
         subscribeButton.addAction(UIAction { [unowned self] _ in
             self.didTapSubscribe()
@@ -36,23 +41,29 @@ extension PaywallScreen {
     private func didTapSubscribe() {
         Task {
             if viewModel.isPremiumUser {
-                showAlert(title: "Already Subscribed",
-                          message: "You already have an active subscription.")
-                return
+                showAlert(title: "Subscribed", message: "Your subscription is already active.")
+                                return
             }
             
-            guard let product = premiumProduct else {
-                showAlert(title: "Error", message: "Premium product not loaded")
-                return
+            guard let result = await viewModel.purchase() else {
+                showAlert(title: "Error", message: "Unable to start purchase.")
+                                return
             }
-            try await viewModel.purchase(product: product)
+            
+            if result.isPurchaseCancelled {
+                showAlert(title: "Cancelled", message: "You cancelled the purchase.")
+            } else if result.isPurchasePending {
+                showAlert(title: "Pending", message: "Your purchase is pending approval.")
+            } else if let updatedProfile = result.profile {
+                showAlert(title: "Success", message: "Your subscription is now active!")
+            }
         }
     }
     
     private func showAlert(title: String, message: String) {
-      let a = UIAlertController(title: title, message: message, preferredStyle: .alert)
-      a.addAction(.init(title: "OK", style: .default))
-      present(a, animated: true)
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alert.addAction(.init(title: "OK", style: .default))
+      present(alert, animated: true)
     }
 }
 
