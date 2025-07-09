@@ -4,7 +4,9 @@
 //
 //  Created by Georgy on 2025-07-05.
 //
+
 import UIKit
+import Swinject
 
 protocol AnyScreen {
     func present(screen: UIViewController)
@@ -19,16 +21,16 @@ extension AnyScreen where Self: UIViewController {
 
 class HomeViewModel {
     private weak var view: SelectProfileHomeScreen?
-    private let jsonService: JSONLoading
     
-    init(view: SelectProfileHomeScreen,
-         jsonService: JSONLoading = LocalJSONManager()) {
+    init(view: SelectProfileHomeScreen) {
         self.view = view
-        self.jsonService = jsonService
     }
     
     func loadProfiles() {
-        Task { [weak view, jsonService] in
+        Task { [weak view] in
+            guard let jsonService = dependencies.container.resolve(JSONLoading.self) else {
+                return
+            }
             let models = await jsonService.loadProfiles()
         
             let profiles = models.map {

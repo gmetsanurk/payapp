@@ -6,11 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 import Adapty
 import AdaptyUI
-import SnapKit
-import Combine
-import SwiftUICore
 
 typealias SelectCellScreenHandler = () -> Void
 
