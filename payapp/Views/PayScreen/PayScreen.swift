@@ -52,13 +52,13 @@ final class PayScreen: UIViewController {
 
 extension PayScreen {
     
-    private func reloadProfileAdapty() {
+    func reloadProfileAdapty() {
         Task {
             await viewModel.reloadProfile()
         }
     }
     
-    func createSubscribeButton() {
+    private func createSubscribeButton() {
         let button = UIButton(type: .system)
         button.setTitle("Subscribe", for: .normal)
         button.addAction(UIAction { [unowned self] _ in
@@ -70,82 +70,22 @@ extension PayScreen {
     private func didTapSubscribe() {
         Task {
             do {
-                // get paywall object with Placement ID
-                let paywall = try await Adapty.getPaywall(
-                    placementId: AppConstants.placementId
-                )
-                // configure paywall
-                let configuration = try await AdaptyUI.getPaywallConfiguration(
-                    forPaywall: paywall
-                )
-                // create controller of completed paywall screen
-                let paywallController = try? AdaptyUI.paywallController(
-                    with: configuration,
-                    delegate: self
-                )
-                // show
-                guard let paywallController = paywallController else { return }
-                present(paywallController, animated: true)
+                try await fetchAdaptyPaywall()
             } catch {
-                // show alert in the case of an error
                 showAlert(title: "Error", message: error.localizedDescription)
             }
         }
     }
     
-    private func showAlert(title: String, message: String) {
+}
+
+extension PayScreen {
+    
+    func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(.init(title: "OK", style: .default))
         present(alert, animated: true)
     }
-    
-}
-
-extension PayScreen: AdaptyPaywallControllerDelegate {
-    
-    // when customer finish purchasing
-    func paywallDidFinishPurchase(
-        _ controller: AdaptyPaywallController,
-        product: AdaptyPaywallProduct,
-        profile: AdaptyProfile
-    ) {
-        controller.dismiss(animated: true)
-        // TODO: reload UI
-    }
-    
-    // customer pressed close button
-    func paywallDidClose(_ controller: AdaptyPaywallController) {
-        controller.dismiss(animated: true)
-    }
-    
-    // MARK: AdaptyPaywallControllerDelegate
-    
-    // Customer's purchase failed
-    func paywallController(
-        _ controller: AdaptyPaywallController,
-        didFailPurchase product: AdaptyPaywallProduct,
-        error: AdaptyError
-    ) {
-        controller.dismiss(animated: true)
-        showAlert(title: "Purchase fail", message: error.localizedDescription)
-    }
-    
-    func paywallController(
-        _ controller: AdaptyPaywallController,
-        didFinishRestoreWith profile: AdaptyProfile
-    ) {
-        // handle the restore result
-    }
-    
-    func paywallController(
-        _ controller: AdaptyPaywallController,
-        didFailRestoreWith error: AdaptyError
-    ) {
-        // handle the error
-    }
-}
-
-extension PayScreen {
     
     func createSlides() {
         let slidesArray: [Slide] = [
@@ -255,7 +195,6 @@ extension PayScreen {
         view.addSubview(subscribeButton)
         
         bottomContainer.backgroundColor = AppColors.bottomContainerColor
-        //bottomContainer.layer.cornerRadius = 30
         bottomContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         priceLabel.text = "Subscribe for $0.99 weekly"
