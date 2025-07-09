@@ -9,7 +9,7 @@ import UIKit
 
 typealias CellDataType = ProfileModel
 
-class SelectProfileHomeScreen: UIViewController {
+final class SelectProfileHomeScreen: UIViewController {
     
     private let headerView = UIView()
     private let titleLabel = UILabel()

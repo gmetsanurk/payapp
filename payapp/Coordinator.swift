@@ -21,7 +21,7 @@ extension Coordinator {
     func openPopular() { }
 }
 
-actor UIKitCoordinator: Coordinator {
+final actor UIKitCoordinator: Coordinator {
     unowned var window: UIWindow
     
     init(window: UIWindow) {

@@ -10,8 +10,7 @@ import Adapty
 import AdaptyUI
 import Swinject
 
-
-actor Dependencies {
+final actor Dependencies {
     let container = {
         let container = Container()
         container.register(JSONLoading.self) { _ in

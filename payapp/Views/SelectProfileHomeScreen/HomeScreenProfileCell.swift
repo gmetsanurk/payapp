@@ -13,7 +13,7 @@ protocol CustomizableCell {
     func configure(with data: CellDataType) async
 }
 
-class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
+final class HomeScreenProfileCell: UICollectionViewCell, CustomizableCell {
     private unowned var cellPhotoImageView: UIImageView!
     private unowned var statusImageView: UIImageView!
     private unowned var flagNameAgeLabel: UILabel!

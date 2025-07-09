@@ -12,7 +12,7 @@ import AdaptyUI
 
 typealias SelectCellScreenHandler = () -> Void
 
-class PayScreen: UIViewController {
+final class PayScreen: UIViewController {
     
     private lazy var viewModel = PayViewModel(view: self)
     

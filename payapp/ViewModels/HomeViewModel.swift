@@ -19,7 +19,7 @@ extension AnyScreen where Self: UIViewController {
     }
 }
 
-class HomeViewModel {
+final class HomeViewModel {
     private weak var view: SelectProfileHomeScreen?
     
     init(view: SelectProfileHomeScreen) {
@@ -28,7 +28,7 @@ class HomeViewModel {
     
     func loadProfiles() {
         Task { [weak view] in
-            guard let jsonService = dependencies.container.resolve(JSONLoading.self) else {
+            guard let jsonService = await dependencies.container.resolve(JSONLoading.self) else {
                 return
             }
             let models = await jsonService.loadProfiles()
