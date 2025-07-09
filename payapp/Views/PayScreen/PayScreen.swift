@@ -16,7 +16,22 @@ final class PayScreen: UIViewController {
     
     private lazy var viewModel = PayViewModel(view: self)
     
-    private var subscribeButton: UIButton!
+    private struct Slide {
+        let title: NSAttributedString
+        let image: UIImage?
+    }
+    
+    private lazy var slides: [Slide] = []
+    var slideControllers: [UIViewController] = []
+    
+    private var pageViewController: UIPageViewController!
+    let pageControl = UIPageControl()
+    private let bottomContainer = UIView()
+    private let priceLabel = UILabel()
+    private let detailLabel = UILabel()
+    private var subscribeButton = UIButton(type: .system)
+    private let termsStack = UIStackView()
+    private let termsButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +45,54 @@ final class PayScreen: UIViewController {
 
 extension PayScreen {
     
+    func createSlides() {
+        var slidesArray: [Slide] = [
+            .init(
+                title: setupSlideAttributes("Get ", highlight: "599 Coins", suffix: " NOW And Every Week"),
+                image: UIImage(named: "slide1")
+            ),
+            .init(
+                title: setupSlideAttributes("Send ", highlight: "Unlimited Messages", suffix: ""),
+                image: UIImage(named: "slide2")
+            ),
+            .init(
+                title: setupSlideAttributes("Turn Off ", highlight: "Camera & Sound", suffix: ""),
+                image: UIImage(named: "slide3")
+            ),
+            .init(
+                title: setupSlideAttributes("Mark Your Profile With ", highlight: "VIP Status", suffix: ""),
+                image: UIImage(named: "slide4")
+            )
+        ]
+        self.slides = slidesArray
+    }
+    
+    func setupSlideAttributes(_ prefix: String, highlight: String, suffix: String) -> NSAttributedString {
+        let full = NSMutableAttributedString(
+            string: prefix,
+            attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .bold)]
+        )
+        full.append(.init(
+            string: highlight,
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .foregroundColor: UIColor.systemPink
+            ]
+        ))
+        full.append(.init(
+            string: suffix,
+            attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .bold)]
+        ))
+        return full
+    }
+    
     func createButton() {
-        subscribeButton = UIButton(type: .system)
-        subscribeButton.setTitle("Subscribe", for: .normal)
-        subscribeButton.addAction(UIAction { [unowned self] _ in
+        let button = UIButton(type: .system)
+        button.setTitle("Subscribe", for: .normal)
+        button.addAction(UIAction { [unowned self] _ in
             self.didTapSubscribe()
         }, for: .primaryActionTriggered)
+        self.subscribeButton = button
     }
     
     private func didTapSubscribe() {
