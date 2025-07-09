@@ -34,7 +34,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             .with(customerUserId: UserManager.currentUserId)
             .build()
 
-        Adapty.delegate = PaywallViewModel()
+        Adapty.delegate = PayViewModel()
         Adapty.logLevel = .verbose
         Adapty.activate(with: configuration)
 

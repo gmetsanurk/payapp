@@ -30,7 +30,7 @@ actor UIKitCoordinator: Coordinator {
     
     @MainActor
     func start() async {
-        if let someScreen = await window.rootViewController, let presentedViewController = someScreen.presentedViewController as? PaywallScreen {
+        if let someScreen = await window.rootViewController, let presentedViewController = someScreen.presentedViewController as? PayScreen {
                 presentedViewController.dismiss(animated: true)
             } else {
                 await window.rootViewController = SelectProfileHomeScreen()
@@ -40,7 +40,7 @@ actor UIKitCoordinator: Coordinator {
     
     @MainActor
     func openPaywallScreen() async {
-        let payWallScreen = PaywallScreen()
+        let payWallScreen = PayScreen()
         if let homeView = await window.rootViewController as? AnyScreen{
             homeView.present(screen: payWallScreen)
         } else if await window.rootViewController == nil {

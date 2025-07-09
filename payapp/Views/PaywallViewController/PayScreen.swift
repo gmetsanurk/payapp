@@ -14,12 +14,9 @@ import SwiftUICore
 
 typealias SelectCellScreenHandler = () -> Void
 
-class PaywallScreen: UIViewController {
+class PayScreen: UIViewController {
     
-    private let viewModel = PaywallViewModel.shared
-    
-    @State private var isPresentingProfile: Bool = false
-    @State private var isPresentingPaywall: Bool = false
+    private let viewModel = PayViewModel.shared
     
     private var subscribeButton: UIButton!
     
@@ -36,7 +33,7 @@ class PaywallScreen: UIViewController {
     
 }
 
-extension PaywallScreen {
+extension PayScreen {
     
     func createButton() {
         subscribeButton = UIButton(type: .system)
@@ -49,29 +46,29 @@ extension PaywallScreen {
     private func didTapSubscribe() {
         Task {
             do {
-                // 3.1. Получаем объект paywall по вашему Placement ID
+                // get paywall object with Placement ID
                 let paywall = try await Adapty.getPaywall(
                     placementId: AppConstants.placementId
                 )
                 
-                // 3.2. Конфигурируем UI-детали вашего paywall
+                // configure paywall
                 let configuration = try await AdaptyUI.getPaywallConfiguration(
                     forPaywall: paywall
                 )
                 
-                // 3.3. Создаём контроллер готового paywall-экрана
+                // create controller of completed paywall screen
                 let paywallController = try? AdaptyUI.paywallController(
                     with: configuration,
-                    delegate: self   // 4. Слушаем события paywall
+                    delegate: self
                 )
                 
-                // 3.4. Показываем его модально
+                // show
                 guard let paywallController = paywallController else { return }
                 present(paywallController, animated: true)
                 
             } catch {
-                // В случае ошибки — показываем alert
-                showAlert(title: "Ошибка", message: error.localizedDescription)
+                // show alert in the case of an error
+                showAlert(title: "Error", message: error.localizedDescription)
             }
         }
     }
@@ -92,32 +89,34 @@ extension PaywallScreen {
     }
 }
 
-extension PaywallScreen: AdaptyPaywallControllerDelegate {
+extension PayScreen: AdaptyPaywallControllerDelegate {
     
-    // Когда пользователь покупает продукт
+    // when customer finish purchasing
     func paywallDidFinishPurchase(
         _ controller: AdaptyPaywallController,
         product: AdaptyPaywallProduct,
         profile: AdaptyProfile
     ) {
         controller.dismiss(animated: true)
-        // TODO: обновить UI или viewModel по новому профилю
+        // TODO: reload UI
     }
 
-    // Ошибка покупки
+    // purchase failing
     func paywallDidFailPurchase(
         _ controller: AdaptyPaywallController,
         product: AdaptyPaywallProduct,
         error: Error
     ) {
         controller.dismiss(animated: true)
-        showAlert(title: "Ошибка покупки", message: error.localizedDescription)
+        showAlert(title: "Purchase fail", message: error.localizedDescription)
     }
 
-    // Пользователь нажал закрыть
+    // customer pressed closew button
     func paywallDidClose(_ controller: AdaptyPaywallController) {
         controller.dismiss(animated: true)
     }
+    
+    // MARK: AdaptyPaywallControllerDelegate
 
     func paywallController(
         _ controller: AdaptyPaywallController,
@@ -142,6 +141,6 @@ extension PaywallScreen: AdaptyPaywallControllerDelegate {
     }
 }
 
-extension PaywallScreen: AnyScreen {
+extension PayScreen: AnyScreen {
     func present(screen: UIViewController) {}
 }
