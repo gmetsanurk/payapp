@@ -134,6 +134,14 @@ extension PayScreen {
         )
     }
     
+    func setupPageControl() {
+        pageControl.numberOfPages = slides.count
+        pageControl.currentPage = 0
+        pageControl.pageIndicatorTintColor = UIColor.lightGray.withAlphaComponent(0.5)
+        pageControl.currentPageIndicatorTintColor = UIColor.lightGray
+        view.addSubview(pageControl)
+    }
+    
     func createButton() {
         let button = UIButton(type: .system)
         button.setTitle("Subscribe", for: .normal)
