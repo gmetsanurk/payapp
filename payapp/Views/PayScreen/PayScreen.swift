@@ -172,7 +172,10 @@ extension PayScreen {
     func setupSlideAttributes(_ prefix: String, highlight: String, suffix: String) -> NSAttributedString {
         let full = NSMutableAttributedString(
             string: prefix,
-            attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .bold)]
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .foregroundColor: UIColor.black
+                ]
         )
         full.append(.init(
             string: highlight,
@@ -183,7 +186,10 @@ extension PayScreen {
         ))
         full.append(.init(
             string: suffix,
-            attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .bold)]
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .foregroundColor: UIColor.black
+                ]
         ))
         return full
     }
@@ -206,10 +212,10 @@ extension PayScreen {
                 make.leading.trailing.equalToSuperview().inset(32)
             }
             imageView.snp.makeConstraints { make in
-                make.top.equalTo(label.snp.bottom).offset(16)
+                make.centerY.equalToSuperview()
                 make.centerX.equalToSuperview()
-                make.height.equalTo(200)
-                make.width.equalTo(imageView.snp.height)
+                make.width.equalToSuperview().multipliedBy(0.9)
+                make.height.equalTo(imageView.snp.width).multipliedBy(1.0)
             }
             return viewController
         }

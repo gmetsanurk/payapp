@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		668B74682E1E733B00DBD4F3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74672E1E732C00DBD4F3 /* MainTabBarController.swift */; };
 		668B746A2E1EAB0400DBD4F3 /* PayScreenPWProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */; };
-		668B746E2E1ED00500DBD4F3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B746D2E1ECFFD00DBD4F3 /* UIColor+Extension.swift */; };
 		668B74702E1EE14200DBD4F3 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B746F2E1EE13C00DBD4F3 /* AppColors.swift */; };
 		66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */; };
 		66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */; };
@@ -37,7 +36,6 @@
 /* Begin PBXFileReference section */
 		668B74672E1E732C00DBD4F3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenPWProtocol.swift; sourceTree = "<group>"; };
-		668B746D2E1ECFFD00DBD4F3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		668B746F2E1EE13C00DBD4F3 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		66A1A5882E17CAE80095FBF8 /* payapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = payapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,14 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		668B746C2E1ECFE800DBD4F3 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				668B746D2E1ECFFD00DBD4F3 /* UIColor+Extension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		66A1A57F2E17CAE80095FBF8 = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +99,6 @@
 				66A1A5F42E19332F0095FBF8 /* Views */,
 				66A1A5F12E19316F0095FBF8 /* ViewModels */,
 				66A1A5CE2E1811B50095FBF8 /* Models */,
-				668B746C2E1ECFE800DBD4F3 /* Extensions */,
 				66A1A5E92E191FF10095FBF8 /* Resources */,
 				66A1A5B42E17D5BC0095FBF8 /* Info.plist */,
 			);
@@ -273,7 +262,6 @@
 				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
 				66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */,
 				668B746A2E1EAB0400DBD4F3 /* PayScreenPWProtocol.swift in Sources */,
-				668B746E2E1ED00500DBD4F3 /* UIColor+Extension.swift in Sources */,
 				66A1A6052E1C31B60095FBF8 /* UserManager.swift in Sources */,
 				66A1A6012E1C31720095FBF8 /* PayViewModel.swift in Sources */,
 				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
