@@ -16,7 +16,7 @@ typealias SelectCellScreenHandler = () -> Void
 
 class PayScreen: UIViewController {
     
-    private let viewModel = PayViewModel.shared
+    private lazy var viewModel = PayViewModel(view: self)
     
     private var subscribeButton: UIButton!
     
@@ -47,22 +47,18 @@ extension PayScreen {
                 let paywall = try await Adapty.getPaywall(
                     placementId: AppConstants.placementId
                 )
-                
                 // configure paywall
                 let configuration = try await AdaptyUI.getPaywallConfiguration(
                     forPaywall: paywall
                 )
-                
                 // create controller of completed paywall screen
                 let paywallController = try? AdaptyUI.paywallController(
                     with: configuration,
                     delegate: self
                 )
-                
                 // show
                 guard let paywallController = paywallController else { return }
                 present(paywallController, animated: true)
-                
             } catch {
                 // show alert in the case of an error
                 showAlert(title: "Error", message: error.localizedDescription)
@@ -78,7 +74,7 @@ extension PayScreen {
     
     private func setupUI() {
         view.addSubview(subscribeButton)
-        
+    
         subscribeButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()

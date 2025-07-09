@@ -11,18 +11,13 @@ import Foundation
 
 final class PayViewModel: NSObject, ObservableObject, AdaptyDelegate {
     
-    static let shared = PayViewModel()
-    
-    var isPremiumUser: Bool { profile?.accessLevels[AppConstants.accessLevelId]?.isActive ?? false }
-    
-    private let placementId = AppConstants.placementId
+    private weak var view: PayScreen?
     
     @Published var profile: AdaptyProfile?
-    
     @Published var isLoading = false
-    @Published var premiumProduct: AdaptyPaywallProduct?
     
-    override init() {
+    init(view: PayScreen) {
+        self.view = view
         super.init()
         
         Adapty.delegate = self
@@ -45,7 +40,6 @@ final class PayViewModel: NSObject, ObservableObject, AdaptyDelegate {
     
     
     // MARK: AdaptyDelegate
-    
     func didLoadLatestProfile(_ profile: AdaptyProfile) {
         Task {
             await MainActor.run {
