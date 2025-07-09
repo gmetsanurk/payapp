@@ -7,19 +7,17 @@
 
 import UIKit
 import Adapty
+import AdaptyUI
 import Swinject
 
-struct Dependencies {
+actor Dependencies {
     let container = {
         let container = Container()
         return container
     }()
-    
-    func resolve<Service>(_ serviceType: Service.Type) -> Service? {
-        container.resolve(serviceType)
-    }
 }
 
+extension Container: @retroactive @unchecked Sendable { }
 let dependencies = Dependencies()
 
 @main
@@ -31,7 +29,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        //Adapty.activate("public_live_XcszhjPr.4kS0P09Oj0L61jrl7Iu3")
+        let configuration = AdaptyConfiguration
+            .builder(withAPIKey: AppConstants.adaptyApiKey)
+            .with(customerUserId: UserManager.currentUserId)
+            .build()
+
+        Adapty.delegate = PaywallViewModel()
+        Adapty.logLevel = .verbose
+        Adapty.activate(with: configuration)
+
+        if #available(iOS 15.0, *) {
+            AdaptyUI.activate()
+        }
+        
         setupWindow()
         return true
     }
@@ -41,7 +51,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         dependencies.container.register(Coordinator.self) { [weak self] _ in
             UIKitCoordinator(window: self?.window ?? .init())
         }
-        dependencies.resolve(Coordinator.self)?.start()
+        Task {
+            await dependencies.container.resolve(Coordinator.self)?.start()
+        }
     }
 }
 

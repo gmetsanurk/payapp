@@ -8,10 +8,6 @@
 import UIKit
 import SnapKit
 
-protocol CollectionViewSelectDelegate: AnyObject {
-    func onSelected()
-}
-
 typealias HomeCollectionViewDataHandler = () -> Void
 
 class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & CustomizableCell, DataType>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -44,7 +40,9 @@ class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & Customiza
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        (cell as? CustomizableCell)?.configure(with: data[indexPath.item] as! CellDataType)
+        Task { @MainActor in
+            await (cell as? CustomizableCell)?.configure(with: data[indexPath.item] as! CellDataType)
+        }
         return cell
     }
     

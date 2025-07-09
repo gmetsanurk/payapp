@@ -16,9 +16,14 @@ class SelectProfileHomeScreen: UIViewController {
     private let coinsButton = UIButton(type: .custom)
     private var segmentedControl = UISegmentedControl()
     
+    struct Constants {
+        static let itemsPerLine = 2
+        static let padding: CGFloat = 16
+    }
+    
     private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>?
     
-    private lazy var presenter = HomePresenter(view: self)
+    private lazy var viewModel = HomeViewModel(view: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,23 +33,18 @@ class SelectProfileHomeScreen: UIViewController {
         createProfilesList()
         makeConstraints()
         
-        DispatchQueue.main.async { [weak self] in
-            self?.presenter.loadProfiles()
-        }
+        viewModel.loadProfiles()
     }
     
     func displayProfiles(_ profiles: [CellDataType]) {
         selectProfilesList?.data = profiles
     }
     
+    func onCellSelected() {
+        viewModel.handleSelect()
+    }
 }
 
-extension SelectProfileHomeScreen: SelectPaywallScreenDelegate {
-    func onCellSelected() {
-        presenter.handleSelect()
-    }
-    
-}
 extension SelectProfileHomeScreen {
     func setupUI() {
         setupHeaderView()
@@ -59,9 +59,9 @@ extension SelectProfileHomeScreen {
     
     func createProfilesList() {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = .init(width: view.bounds.width - 32, height: 200)
-        layout.minimumLineSpacing = 16
-        layout.sectionInset = .init(top: 16, left: 16, bottom: 16, right: 16)
+        layout.itemSize = .init(width: itemWidth, height: 200)
+        layout.minimumLineSpacing = Constants.padding
+        layout.sectionInset = .init(top: Constants.padding, left: Constants.padding, bottom: Constants.padding, right: Constants.padding)
         
         let profilesList = SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>(
             frame: .zero, collectionViewLayout: layout,
@@ -72,7 +72,16 @@ extension SelectProfileHomeScreen {
         profilesList.backgroundColor = .white
         view.addSubview(profilesList)
         self.selectProfilesList = profilesList
+    }
+    
+    private var itemWidth: CGFloat {
+        view.bounds.width/CGFloat(Constants.itemsPerLine) - Constants.padding * 2
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
+        (selectProfilesList?.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = .init(width: itemWidth, height: 200)
     }
     
     func setupHeaderView() {
@@ -81,6 +90,7 @@ extension SelectProfileHomeScreen {
     }
     
     func setupTitleLabel() {
+        // TODO: localize
         titleLabel.text = "Feed"
         titleLabel.font = .systemFont(ofSize: 24, weight: .bold)
         headerView.addSubview(titleLabel)
@@ -109,18 +119,18 @@ extension SelectProfileHomeScreen {
         headerView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(segmentedControl.snp.bottom).offset(8)
+            make.bottom.equalTo(segmentedControl.snp.bottom).offset(Constants.padding/2.0)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(16)
+            make.top.leading.equalToSuperview().inset(Constants.padding)
         }
         coinsButton.snp.makeConstraints { make in
             make.centerY.equalTo(titleLabel)
-            make.trailing.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(Constants.padding)
         }
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Constants.padding)
         }
         
         selectProfilesList?.snp.makeConstraints { make in
@@ -130,3 +140,4 @@ extension SelectProfileHomeScreen {
     }
 }
 
+extension SelectProfileHomeScreen: AnyScreen { }

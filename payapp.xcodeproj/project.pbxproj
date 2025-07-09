@@ -20,11 +20,14 @@
 		66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */; };
 		66A1A5EB2E1920980095FBF8 /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5EA2E19208F0095FBF8 /* Data.json */; };
 		66A1A5F02E192CD40095FBF8 /* LocalJSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */; };
-		66A1A5F32E1931950095FBF8 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5F22E1931880095FBF8 /* HomePresenter.swift */; };
+		66A1A5F32E1931950095FBF8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5F22E1931880095FBF8 /* HomeViewModel.swift */; };
 		66A1A5F62E1AB76E0095FBF8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5F52E1AB7680095FBF8 /* Coordinator.swift */; };
-		66A1A5F82E1BA9A10095FBF8 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5F72E1BA9A10095FBF8 /* Configuration.storekit */; };
 		66A1A5FC2E1BB2E30095FBF8 /* PaywallScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5FB2E1BB2D80095FBF8 /* PaywallScreen.swift */; };
 		66A1A5FF2E1BCA2B0095FBF8 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 66A1A5FE2E1BCA2B0095FBF8 /* Swinject */; };
+		66A1A6012E1C31720095FBF8 /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A6002E1C316B0095FBF8 /* PaywallViewModel.swift */; };
+		66A1A6032E1C31970095FBF8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A6022E1C31920095FBF8 /* AppConstants.swift */; };
+		66A1A6052E1C31B60095FBF8 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A6042E1C31B30095FBF8 /* UserManager.swift */; };
+		66A1A6072E1C31D90095FBF8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A6062E1C31D60095FBF8 /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +41,13 @@
 		66A1A5CC2E1811B10095FBF8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		66A1A5EA2E19208F0095FBF8 /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
 		66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJSONManager.swift; sourceTree = "<group>"; };
-		66A1A5F22E1931880095FBF8 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		66A1A5F22E1931880095FBF8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		66A1A5F52E1AB7680095FBF8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		66A1A5F72E1BA9A10095FBF8 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		66A1A5FB2E1BB2D80095FBF8 /* PaywallScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallScreen.swift; sourceTree = "<group>"; };
+		66A1A6002E1C316B0095FBF8 /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
+		66A1A6022E1C31920095FBF8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		66A1A6042E1C31B30095FBF8 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		66A1A6062E1C31D60095FBF8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +89,12 @@
 				66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */,
 				66A1A5F52E1AB7680095FBF8 /* Coordinator.swift */,
 				66A1A5EF2E192CC50095FBF8 /* LocalJSONManager.swift */,
+				66A1A6112E1CF2A80095FBF8 /* Application */,
 				66A1A5F42E19332F0095FBF8 /* Views */,
-				66A1A5F12E19316F0095FBF8 /* Presenters */,
+				66A1A5F12E19316F0095FBF8 /* ViewModels */,
 				66A1A5CE2E1811B50095FBF8 /* Models */,
 				66A1A5E92E191FF10095FBF8 /* Resources */,
 				66A1A5B42E17D5BC0095FBF8 /* Info.plist */,
-				66A1A5F72E1BA9A10095FBF8 /* Configuration.storekit */,
 			);
 			path = payapp;
 			sourceTree = "<group>";
@@ -110,12 +116,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		66A1A5F12E19316F0095FBF8 /* Presenters */ = {
+		66A1A5F12E19316F0095FBF8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				66A1A5F22E1931880095FBF8 /* HomePresenter.swift */,
+				66A1A5F22E1931880095FBF8 /* HomeViewModel.swift */,
+				66A1A6002E1C316B0095FBF8 /* PaywallViewModel.swift */,
 			);
-			path = Presenters;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		66A1A5F42E19332F0095FBF8 /* Views */ = {
@@ -143,6 +150,16 @@
 				66A1A5FB2E1BB2D80095FBF8 /* PaywallScreen.swift */,
 			);
 			path = PaywallViewController;
+			sourceTree = "<group>";
+		};
+		66A1A6112E1CF2A80095FBF8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				66A1A6022E1C31920095FBF8 /* AppConstants.swift */,
+				66A1A6042E1C31B30095FBF8 /* UserManager.swift */,
+				66A1A6062E1C31D60095FBF8 /* Logger.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +235,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */,
-				66A1A5F82E1BA9A10095FBF8 /* Configuration.storekit in Resources */,
 				66A1A5EB2E1920980095FBF8 /* Data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,10 +249,14 @@
 				66A1A5F62E1AB76E0095FBF8 /* Coordinator.swift in Sources */,
 				66A1A5FC2E1BB2E30095FBF8 /* PaywallScreen.swift in Sources */,
 				66A1A5F02E192CD40095FBF8 /* LocalJSONManager.swift in Sources */,
+				66A1A6032E1C31970095FBF8 /* AppConstants.swift in Sources */,
 				66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */,
 				66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */,
+				66A1A6052E1C31B60095FBF8 /* UserManager.swift in Sources */,
+				66A1A6012E1C31720095FBF8 /* PaywallViewModel.swift in Sources */,
 				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
-				66A1A5F32E1931950095FBF8 /* HomePresenter.swift in Sources */,
+				66A1A6072E1C31D90095FBF8 /* Logger.swift in Sources */,
+				66A1A5F32E1931950095FBF8 /* HomeViewModel.swift in Sources */,
 				66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */,
 				66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */,
 			);
@@ -258,6 +278,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -288,6 +309,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
