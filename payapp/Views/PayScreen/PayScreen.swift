@@ -113,6 +113,27 @@ extension PayScreen {
         }
     }
     
+    func setupPageViewController() {
+        pageViewController = UIPageViewController(
+            transitionStyle: .scroll,
+            navigationOrientation: .horizontal,
+            options: nil
+        )
+        
+        pageViewController.dataSource = self
+        pageViewController.delegate = self
+        
+        addChild(pageViewController)
+        view.addSubview(pageViewController.view)
+        pageViewController.didMove(toParent: self)
+        
+        pageViewController.setViewControllers(
+            [slideControllers[0]],
+            direction: .forward,
+            animated: false
+        )
+    }
+    
     func createButton() {
         let button = UIButton(type: .system)
         button.setTitle("Subscribe", for: .normal)
