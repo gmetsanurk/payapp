@@ -10,7 +10,7 @@ import SnapKit
 
 typealias HomeCollectionViewDataHandler = () -> Void
 
-class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & CustomizableCell, DataType>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
+final class SelectProfileHomeCollectionView<CellType: UICollectionViewCell & CustomizableCell, DataType>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var data: [DataType] = [] {
         didSet {

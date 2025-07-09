@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserManager {
+final class UserManager {
     private static let userIdKey = "app.user.id"
     
     static var currentUserId: String? {

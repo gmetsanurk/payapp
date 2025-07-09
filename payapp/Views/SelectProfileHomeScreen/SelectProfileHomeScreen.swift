@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SelectProfileHomeScreen:.swift
 //  payapp
 //
 //  Created by Georgy on 2025-07-04.
@@ -9,7 +9,7 @@ import UIKit
 
 typealias CellDataType = ProfileModel
 
-class SelectProfileHomeScreen: UIViewController {
+final class SelectProfileHomeScreen: UIViewController {
     
     private let headerView = UIView()
     private let titleLabel = UILabel()
@@ -93,6 +93,7 @@ extension SelectProfileHomeScreen {
         // TODO: localize
         titleLabel.text = "Feed"
         titleLabel.font = .systemFont(ofSize: 24, weight: .bold)
+        titleLabel.textColor = .black
         headerView.addSubview(titleLabel)
         
     }
@@ -109,6 +110,11 @@ extension SelectProfileHomeScreen {
         let sc = UISegmentedControl(items: items)
         sc.backgroundColor = .clear
         sc.selectedSegmentTintColor = .white
+        let blackAttrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black
+        ]
+        sc.setTitleTextAttributes(blackAttrs, for: .normal)
+        sc.setTitleTextAttributes(blackAttrs, for: .selected)
         sc.layer.borderWidth = 0
         sc.selectedSegmentIndex = 0
         return sc

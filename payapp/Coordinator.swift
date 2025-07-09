@@ -21,7 +21,7 @@ extension Coordinator {
     func openPopular() { }
 }
 
-actor UIKitCoordinator: Coordinator {
+final actor UIKitCoordinator: Coordinator {
     unowned var window: UIWindow
     
     init(window: UIWindow) {
@@ -30,19 +30,20 @@ actor UIKitCoordinator: Coordinator {
     
     @MainActor
     func start() async {
-        if let someScreen = await window.rootViewController, let presentedViewController = someScreen.presentedViewController as? PaywallScreen {
+        if let someScreen = await window.rootViewController, let presentedViewController = someScreen.presentedViewController as? PayScreen {
                 presentedViewController.dismiss(animated: true)
             } else {
-                await window.rootViewController = SelectProfileHomeScreen()
+                await window.rootViewController = MainTabBarController()
                 await window.makeKeyAndVisible()
             }
     }
     
     @MainActor
     func openPaywallScreen() async {
-        let payWallScreen = PaywallScreen()
-        if let homeView = await window.rootViewController as? AnyScreen{
-            homeView.present(screen: payWallScreen)
+        let payWallScreen = PayScreen()
+        if let tab = await window.rootViewController as? UITabBarController,
+           let current = tab.selectedViewController as? AnyScreen {
+            current.present(screen: payWallScreen)
         } else if await window.rootViewController == nil {
             await window.rootViewController = SelectProfileHomeScreen()
             await window.makeKeyAndVisible()

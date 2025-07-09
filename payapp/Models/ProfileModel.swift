@@ -5,8 +5,6 @@
 //  Created by Georgy on 2025-07-04.
 //
 
-import UIKit
-
 struct ProfileModel: Codable {
     let name: String?
     let age: Int?
