@@ -46,22 +46,22 @@ final class PayScreen: UIViewController {
 extension PayScreen {
     
     func createSlides() {
-        var slidesArray: [Slide] = [
+        let slidesArray: [Slide] = [
             .init(
                 title: setupSlideAttributes("Get ", highlight: "599 Coins", suffix: " NOW And Every Week"),
-                image: UIImage(named: "slide1")
+                image: UIImage(named: "payscreen-1")
             ),
             .init(
                 title: setupSlideAttributes("Send ", highlight: "Unlimited Messages", suffix: ""),
-                image: UIImage(named: "slide2")
+                image: UIImage(named: "payscreen-2")
             ),
             .init(
                 title: setupSlideAttributes("Turn Off ", highlight: "Camera & Sound", suffix: ""),
-                image: UIImage(named: "slide3")
+                image: UIImage(named: "payscreen-3")
             ),
             .init(
                 title: setupSlideAttributes("Mark Your Profile With ", highlight: "VIP Status", suffix: ""),
-                image: UIImage(named: "slide4")
+                image: UIImage(named: "payscreen-4")
             )
         ]
         self.slides = slidesArray
@@ -84,6 +84,33 @@ extension PayScreen {
             attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .bold)]
         ))
         return full
+    }
+    
+    private func makeSlideControllers() {
+        slideControllers = slides.map { slide in
+            let viewController = UIViewController()
+            let imageView = UIImageView(image: slide.image)
+            imageView.contentMode = .scaleAspectFit
+            let label = UILabel()
+            label.attributedText = slide.title
+            label.numberOfLines = 0
+            label.textAlignment = .center
+            
+            viewController.view.addSubview(label)
+            viewController.view.addSubview(imageView)
+            
+            label.snp.makeConstraints { make in
+                make.top.equalTo(viewController.view.safeAreaLayoutGuide).offset(24)
+                make.leading.trailing.equalToSuperview().inset(32)
+            }
+            imageView.snp.makeConstraints { make in
+                make.top.equalTo(label.snp.bottom).offset(16)
+                make.centerX.equalToSuperview()
+                make.height.equalTo(200)
+                make.width.equalTo(imageView.snp.height)
+            }
+            return viewController
+        }
     }
     
     func createButton() {
