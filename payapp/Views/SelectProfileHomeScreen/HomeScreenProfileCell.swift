@@ -58,9 +58,13 @@ extension HomeScreenProfileCell {
         setupCellPhotoImageView()
         setupStatusImageView()
         setupFlagNameAgeLabel()
-        setupChatButton()
-        setupVideoButton()
-        setupLikeButton()
+        setupCellButtons()
+    }
+    
+    private func setupCellButtons() {
+        chatButton = setupCellButton(named: "chat-label")
+        videoButton =  setupCellButton(named: "btn-live")
+        likeButton =  setupCellButton(named: "favorite-1")
     }
     
     func setupCellPhotoImageView() {
@@ -88,38 +92,20 @@ extension HomeScreenProfileCell {
         self.flagNameAgeLabel = label
     }
     
-    // Refactor these 2 functions into 1
-    func setupChatButton() {
-        let chatBtn = UIButton(type: .system)
-        let image = UIImage(named: "chat-label")?.withRenderingMode(.alwaysOriginal)
-        chatBtn.setImage(image, for: .normal)
-        setupStyleForCellButtons(for: chatBtn)
-        contentView.addSubview(chatBtn)
-        self.chatButton = chatBtn
-    }
-    
-    func setupVideoButton() {
-        let videoBtn = UIButton(type: .system)
-        let image = UIImage(named: "btn-live")?.withRenderingMode(.alwaysOriginal)
-        videoBtn.setImage(image, for: .normal)
-        setupStyleForCellButtons(for: videoBtn)
-        contentView.addSubview(videoBtn)
-        self.videoButton = videoBtn
-    }
-    
-    func setupLikeButton() {
-        let likeBtn = UIButton(type: .system)
-        let image = UIImage(named: "favorite-1")?.withRenderingMode(.alwaysOriginal)
-        likeBtn.setImage(image, for: .normal)
-        setupStyleForCellButtons(for: likeBtn)
-        contentView.addSubview(likeBtn)
-        self.likeButton = likeBtn
-    }
-    
-    func setupStyleForCellButtons(for button: UIButton) {
+    private func setupCellButton(
+        named imageName: String,
+        configurator: ((UIButton) -> Void)? = nil
+    ) -> UIButton {
+        let button = UIButton(type: .system)
+        let image = UIImage(named: imageName)?
+            .withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 14
         button.tintColor = .white
+        configurator?(button)
+        contentView.addSubview(button)
+        return button
     }
     
 }

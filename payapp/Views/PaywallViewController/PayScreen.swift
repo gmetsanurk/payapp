@@ -25,10 +25,7 @@ class PayScreen: UIViewController {
         view.backgroundColor = .white
         createButton()
         setupUI()
-        
-        Task {
-            await viewModel.reloadProfile()
-        }
+        viewModelReloadProfile()
     }
     
 }
@@ -87,6 +84,12 @@ extension PayScreen {
             make.centerY.equalToSuperview()
         }
     }
+    
+    private func viewModelReloadProfile() {
+        Task {
+            await viewModel.reloadProfile()
+        }
+    }
 }
 
 extension PayScreen: AdaptyPaywallControllerDelegate {
@@ -101,29 +104,21 @@ extension PayScreen: AdaptyPaywallControllerDelegate {
         // TODO: reload UI
     }
 
-    // purchase failing
-    func paywallDidFailPurchase(
-        _ controller: AdaptyPaywallController,
-        product: AdaptyPaywallProduct,
-        error: Error
-    ) {
-        controller.dismiss(animated: true)
-        showAlert(title: "Purchase fail", message: error.localizedDescription)
-    }
-
-    // customer pressed closew button
+    // customer pressed close button
     func paywallDidClose(_ controller: AdaptyPaywallController) {
         controller.dismiss(animated: true)
     }
     
     // MARK: AdaptyPaywallControllerDelegate
-
+    
+    // Customer's purchase failed
     func paywallController(
         _ controller: AdaptyPaywallController,
         didFailPurchase product: AdaptyPaywallProduct,
         error: AdaptyError
     ) {
-        // handle the error
+        controller.dismiss(animated: true)
+        showAlert(title: "Purchase fail", message: error.localizedDescription)
     }
 
     func paywallController(
