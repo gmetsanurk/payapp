@@ -9,12 +9,17 @@ import UIKit
 import Adapty
 import AdaptyUI
 import SnapKit
+import Combine
+import SwiftUICore
 
 typealias SelectCellScreenHandler = () -> Void
 
 class PaywallScreen: UIViewController {
     
     private let viewModel = PaywallViewModel.shared
+    
+    @State private var isPresentingProfile: Bool = false
+    @State private var isPresentingPaywall: Bool = false
     
     private var subscribeButton: UIButton!
     
@@ -26,7 +31,6 @@ class PaywallScreen: UIViewController {
         
         Task {
             await viewModel.reloadProfile()
-            await viewModel.loadPaywall()
         }
     }
     
@@ -44,22 +48,30 @@ extension PaywallScreen {
     
     private func didTapSubscribe() {
         Task {
-            if viewModel.isPremiumUser {
-                showAlert(title: "Subscribed", message: "Your subscription is already active.")
-                                return
-            }
-            
-            guard let result = await viewModel.purchase() else {
-                showAlert(title: "Error", message: "Unable to start purchase.")
-                                return
-            }
-            
-            if result.isPurchaseCancelled {
-                showAlert(title: "Cancelled", message: "You cancelled the purchase.")
-            } else if result.isPurchasePending {
-                showAlert(title: "Pending", message: "Your purchase is pending approval.")
-            } else if let updatedProfile = result.profile {
-                showAlert(title: "Success", message: "Your subscription is now active!")
+            do {
+                // 3.1. Получаем объект paywall по вашему Placement ID
+                let paywall = try await Adapty.getPaywall(
+                    placementId: AppConstants.placementId
+                )
+                
+                // 3.2. Конфигурируем UI-детали вашего paywall
+                let configuration = try await AdaptyUI.getPaywallConfiguration(
+                    forPaywall: paywall
+                )
+                
+                // 3.3. Создаём контроллер готового paywall-экрана
+                let paywallController = try? AdaptyUI.paywallController(
+                    with: configuration,
+                    delegate: self   // 4. Слушаем события paywall
+                )
+                
+                // 3.4. Показываем его модально
+                guard let paywallController = paywallController else { return }
+                present(paywallController, animated: true)
+                
+            } catch {
+                // В случае ошибки — показываем alert
+                showAlert(title: "Ошибка", message: error.localizedDescription)
             }
         }
     }
@@ -77,6 +89,56 @@ extension PaywallScreen {
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
+    }
+}
+
+extension PaywallScreen: AdaptyPaywallControllerDelegate {
+    
+    // Когда пользователь покупает продукт
+    func paywallDidFinishPurchase(
+        _ controller: AdaptyPaywallController,
+        product: AdaptyPaywallProduct,
+        profile: AdaptyProfile
+    ) {
+        controller.dismiss(animated: true)
+        // TODO: обновить UI или viewModel по новому профилю
+    }
+
+    // Ошибка покупки
+    func paywallDidFailPurchase(
+        _ controller: AdaptyPaywallController,
+        product: AdaptyPaywallProduct,
+        error: Error
+    ) {
+        controller.dismiss(animated: true)
+        showAlert(title: "Ошибка покупки", message: error.localizedDescription)
+    }
+
+    // Пользователь нажал закрыть
+    func paywallDidClose(_ controller: AdaptyPaywallController) {
+        controller.dismiss(animated: true)
+    }
+
+    func paywallController(
+        _ controller: AdaptyPaywallController,
+        didFailPurchase product: AdaptyPaywallProduct,
+        error: AdaptyError
+    ) {
+        // handle the error
+    }
+
+    func paywallController(
+        _ controller: AdaptyPaywallController,
+        didFinishRestoreWith profile: AdaptyProfile
+    ) {
+        // handle the restore result
+    }
+
+    func paywallController(
+        _ controller: AdaptyPaywallController,
+        didFailRestoreWith error: AdaptyError
+    ) {
+        // handle the error
     }
 }
 
