@@ -41,8 +41,9 @@ actor UIKitCoordinator: Coordinator {
     @MainActor
     func openPaywallScreen() async {
         let payWallScreen = PayScreen()
-        if let homeView = await window.rootViewController as? AnyScreen{
-            homeView.present(screen: payWallScreen)
+        if let tab = await window.rootViewController as? UITabBarController,
+           let current = tab.selectedViewController as? AnyScreen {
+            current.present(screen: payWallScreen)
         } else if await window.rootViewController == nil {
             await window.rootViewController = SelectProfileHomeScreen()
             await window.makeKeyAndVisible()
