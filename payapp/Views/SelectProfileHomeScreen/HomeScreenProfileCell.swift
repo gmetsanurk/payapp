@@ -1,5 +1,5 @@
 //
-//  HomeScreenCell.swift
+//  HomeScreenProfileCell.swift
 //  payapp
 //
 //  Created by Georgy on 2025-07-04.

@@ -1,5 +1,5 @@
 //
-//  PayWallScreen.swift
+//  PayScreen.swift
 //  payapp
 //
 //  Created by Georgy on 2025-07-07.

@@ -33,7 +33,7 @@ actor UIKitCoordinator: Coordinator {
         if let someScreen = await window.rootViewController, let presentedViewController = someScreen.presentedViewController as? PayScreen {
                 presentedViewController.dismiss(animated: true)
             } else {
-                await window.rootViewController = SelectProfileHomeScreen()
+                await window.rootViewController = MainTabBarController()
                 await window.makeKeyAndVisible()
             }
     }
