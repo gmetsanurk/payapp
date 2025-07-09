@@ -38,18 +38,25 @@ final class PayScreen: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         createSubscribeButton()
+        createSlides()
         makeSlideControllers()
         setupPageViewController()
         setupPageControl()
         setupBottomArea()
         layoutAll()
         
-        viewModelReloadProfile()
+        reloadProfileAdapty()
     }
     
 }
 
 extension PayScreen {
+    
+    private func reloadProfileAdapty() {
+        Task {
+            await viewModel.reloadProfile()
+        }
+    }
     
     func createSubscribeButton() {
         let button = UIButton(type: .system)
@@ -87,16 +94,11 @@ extension PayScreen {
     }
     
     private func showAlert(title: String, message: String) {
-      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-      alert.addAction(.init(title: "OK", style: .default))
-      present(alert, animated: true)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(.init(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
-    private func viewModelReloadProfile() {
-        Task {
-            await viewModel.reloadProfile()
-        }
-    }
 }
 
 extension PayScreen: AdaptyPaywallControllerDelegate {
@@ -110,7 +112,7 @@ extension PayScreen: AdaptyPaywallControllerDelegate {
         controller.dismiss(animated: true)
         // TODO: reload UI
     }
-
+    
     // customer pressed close button
     func paywallDidClose(_ controller: AdaptyPaywallController) {
         controller.dismiss(animated: true)
@@ -127,14 +129,14 @@ extension PayScreen: AdaptyPaywallControllerDelegate {
         controller.dismiss(animated: true)
         showAlert(title: "Purchase fail", message: error.localizedDescription)
     }
-
+    
     func paywallController(
         _ controller: AdaptyPaywallController,
         didFinishRestoreWith profile: AdaptyProfile
     ) {
         // handle the restore result
     }
-
+    
     func paywallController(
         _ controller: AdaptyPaywallController,
         didFailRestoreWith error: AdaptyError
@@ -176,7 +178,7 @@ extension PayScreen {
             string: highlight,
             attributes: [
                 .font: UIFont.systemFont(ofSize: 24, weight: .bold),
-                .foregroundColor: UIColor.systemPink
+                .foregroundColor: AppColors.pinkHighlightColor
             ]
         ))
         full.append(.init(
@@ -243,48 +245,48 @@ extension PayScreen {
     }
     
     private func setupBottomArea() {
-            view.addSubview(bottomContainer)
-            view.addSubview(subscribeButton)
+        view.addSubview(bottomContainer)
+        view.addSubview(subscribeButton)
         
-            bottomContainer.backgroundColor = UIColor.purple
-            bottomContainer.layer.cornerRadius = 30
-            bottomContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            
-            priceLabel.text = "Subscribe for $0.99 weekly"
-            priceLabel.textColor = .white
-            priceLabel.font = .systemFont(ofSize: 16, weight: .medium)
-            priceLabel.textAlignment = .center
-            
-            detailLabel.text = "Plan automatically renews. Cancel anytime."
-            detailLabel.textColor = .white
-            detailLabel.font = .systemFont(ofSize: 12)
-            detailLabel.textAlignment = .center
-            
-            subscribeButton.setTitle("Subscribe", for: .normal)
-            subscribeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-            subscribeButton.backgroundColor = UIColor.systemTeal
-            subscribeButton.layer.cornerRadius = 22
-            subscribeButton.setTitleColor(.white, for: .normal)
-            
-            termsButton.setTitle("Terms of Use", for: .normal)
-            termsButton.titleLabel?.font = .systemFont(ofSize: 12)
-            termsButton.setTitleColor(.white, for: .normal)
-            
-            privacyButton.setTitle("Privacy & Policy", for: .normal)
-            privacyButton.titleLabel?.font = .systemFont(ofSize: 12)
-            privacyButton.setTitleColor(.white, for: .normal)
-            
-            termsStack.axis = .horizontal
-            termsStack.distribution = .equalSpacing
-            termsStack.addArrangedSubview(termsButton)
-            termsStack.addArrangedSubview(privacyButton)
-            
-            bottomContainer.addSubview(priceLabel)
-            bottomContainer.addSubview(detailLabel)
-            bottomContainer.addSubview(subscribeButton)
-            bottomContainer.addSubview(termsStack)
-        }
+        bottomContainer.backgroundColor = AppColors.bottomContainerColor
+        //bottomContainer.layer.cornerRadius = 30
+        bottomContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
+        priceLabel.text = "Subscribe for $0.99 weekly"
+        priceLabel.textColor = .white
+        priceLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        priceLabel.textAlignment = .center
+        
+        detailLabel.text = "Plan automatically renews. Cancel anytime."
+        detailLabel.textColor = .white
+        detailLabel.font = .systemFont(ofSize: 12)
+        detailLabel.textAlignment = .center
+        
+        subscribeButton.setTitle("Subscribe", for: .normal)
+        subscribeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        subscribeButton.backgroundColor = AppColors.subscribeButtonColor
+        subscribeButton.layer.cornerRadius = 22
+        subscribeButton.setTitleColor(.white, for: .normal)
+        
+        termsButton.setTitle("Terms of Use", for: .normal)
+        termsButton.titleLabel?.font = .systemFont(ofSize: 12)
+        termsButton.setTitleColor(.white, for: .normal)
+        
+        privacyButton.setTitle("Privacy & Policy", for: .normal)
+        privacyButton.titleLabel?.font = .systemFont(ofSize: 12)
+        privacyButton.setTitleColor(.white, for: .normal)
+        
+        termsStack.axis = .horizontal
+        termsStack.distribution = .equalSpacing
+        termsStack.addArrangedSubview(termsButton)
+        termsStack.addArrangedSubview(privacyButton)
+        
+        bottomContainer.addSubview(priceLabel)
+        bottomContainer.addSubview(detailLabel)
+        bottomContainer.addSubview(subscribeButton)
+        bottomContainer.addSubview(termsStack)
+    }
+    
     private func layoutAll() {
         pageViewController.view.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
