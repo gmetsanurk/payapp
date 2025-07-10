@@ -8,6 +8,7 @@
 import UIKit
 import Swinject
 
+@MainActor
 protocol AnyScreen {
     func present(screen: UIViewController)
 }
