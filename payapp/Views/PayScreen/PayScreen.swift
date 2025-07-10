@@ -140,21 +140,21 @@ extension PayScreen {
         let full = NSMutableAttributedString(
             string: prefix,
             attributes: [
-                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.slideTitleFontSize, weight: .bold),
                 .foregroundColor: UIColor.black
             ]
         )
         full.append(.init(
             string: highlight,
             attributes: [
-                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.slideTitleFontSize, weight: .bold),
                 .foregroundColor: AppColors.pinkHighlightColor
             ]
         ))
         full.append(.init(
             string: suffix,
             attributes: [
-                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.slideTitleFontSize, weight: .bold),
                 .foregroundColor: UIColor.black
             ]
         ))
@@ -224,13 +224,13 @@ extension PayScreen {
         subscribeButton.setTitle("subscribe.button".localized, for: .normal)
         subscribeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         subscribeButton.backgroundColor = AppColors.subscribeButtonColor
-        subscribeButton.layer.cornerRadius = 28
+        subscribeButton.layer.cornerRadius = AppGeometry.PayScreen.subscribeCornerRadius
         subscribeButton.setTitleColor(.white, for: .normal)
     }
     
     private func configureTermsStack() {
         let underlineAttr: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 12),
+            .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.termsFontSize),
             .foregroundColor: UIColor.white,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
@@ -245,7 +245,7 @@ extension PayScreen {
         
         termsStack.axis = .horizontal
         termsStack.distribution = .fill
-        termsStack.spacing = 150
+        termsStack.spacing = AppGeometry.PayScreen.termsSpacing
         
         termsStack.addArrangedSubview(termsButton)
         termsStack.addArrangedSubview(privacyButton)
@@ -259,47 +259,57 @@ extension PayScreen {
     }
     
     private func layoutAll() {
+        
         closeButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.size.equalTo(24)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(AppGeometry.PayScreen.closeTopOffset)
+            make.leading.equalToSuperview().offset(AppGeometry.PayScreen.sideInset)
+            make.size.equalTo(AppGeometry.PayScreen.closeButtonSize)
         }
+        
         restoreButton.snp.makeConstraints { make in
             make.centerY.equalTo(closeButton)
-            make.trailing.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(AppGeometry.PayScreen.sideInset)
         }
+        
         pageViewController.view.snp.makeConstraints { make in
-            make.top.equalTo(closeButton.snp.bottom).offset(8)
+            make.top.equalTo(closeButton.snp.bottom).offset(AppGeometry.PayScreen.closeToPageOffset)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(bottomContainer.snp.top)
         }
+        
         pageControl.snp.makeConstraints { make in
-            make.top.equalTo(pageViewController.view.snp.bottom).offset(-20)
+            make.top.equalTo(pageViewController.view.snp.bottom).offset(AppGeometry.PayScreen.pageControlOffset)
             make.centerX.equalToSuperview()
         }
+        
         bottomContainer.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(view.bounds.height * 0.3)
+            make.height.equalTo(view.bounds.height * AppGeometry.PayScreen.bottomContainerHeightMultiplier)
             make.width.equalToSuperview()
         }
+        
         priceLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(36)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().offset(AppGeometry.PayScreen.priceTopOffset)
+            make.leading.trailing.equalToSuperview().inset(AppGeometry.PayScreen.sideInset)
         }
+        
         detailLabel.snp.makeConstraints { make in
-            make.top.equalTo(priceLabel.snp.bottom).offset(4)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(priceLabel.snp.bottom).offset(AppGeometry.PayScreen.priceToDetailOffset)
+            make.leading.trailing.equalToSuperview().inset(AppGeometry.PayScreen.sideInset)
         }
+        
         subscribeButton.snp.makeConstraints { make in
-            make.top.equalTo(detailLabel.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview().inset(32)
-            make.height.equalTo(56)
+            make.top.equalTo(detailLabel.snp.bottom).offset(AppGeometry.PayScreen.detailToSubscribeOffset)
+            make.leading.trailing.equalToSuperview().inset(AppGeometry.PayScreen.subscribeSideInset)
+            make.height.equalTo(AppGeometry.PayScreen.subscribeHeight)
         }
+        
         termsStack.snp.makeConstraints { make in
-            make.top.equalTo(subscribeButton.snp.bottom).offset(16)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(AppGeometry.PayScreen.subscribeToTermsOffset)
             make.centerX.equalToSuperview()
         }
     }
+    
 }
 
 extension PayScreen: AnyScreen {

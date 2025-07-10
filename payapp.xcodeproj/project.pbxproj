@@ -156,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				668B74672E1E732C00DBD4F3 /* MainTabBarController.swift */,
-				66A1A5FA2E1BB2BE0095FBF8 /* PayScreen */,
 				66A1A5F92E1BB28F0095FBF8 /* SelectProfileHomeScreen */,
+				66A1A5FA2E1BB2BE0095FBF8 /* PayScreen */,
 			);
 			path = Views;
 			sourceTree = "<group>";
