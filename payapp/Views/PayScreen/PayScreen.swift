@@ -16,11 +16,6 @@ final class PayScreen: UIViewController {
     
     private lazy var viewModel = PayViewModel(view: self)
     
-    private struct Slide {
-        let title: NSAttributedString
-        let image: UIImage?
-    }
-    
     private lazy var slides: [Slide] = []
     var slideControllers: [UIViewController] = []
     
@@ -29,8 +24,10 @@ final class PayScreen: UIViewController {
     private let bottomContainer = UIView()
     private let priceLabel = UILabel()
     private let detailLabel = UILabel()
-    private var subscribeButton = UIButton(type: .system)
     private let termsStack = UIStackView()
+    private var subscribeButton = UIButton(type: .system)
+    private let closeButton = UIButton(type: .system)
+    private let restoreButton = UIButton(type: .system)
     private let termsButton = UIButton(type: .system)
     private let privacyButton = UIButton(type: .system)
     
@@ -40,6 +37,7 @@ final class PayScreen: UIViewController {
         createSubscribeButton()
         createSlides()
         makeSlideControllers()
+        setupTopButtons()
         setupPageViewController()
         setupPageControl()
         setupBottomArea()
@@ -80,6 +78,17 @@ extension PayScreen {
 }
 
 extension PayScreen {
+    
+    private func setupTopButtons() {
+            closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+            closeButton.tintColor = .darkGray
+            view.addSubview(closeButton)
+            
+            restoreButton.setTitle("Restore", for: .normal)
+            restoreButton.setTitleColor(.lightGray, for: .normal)
+            restoreButton.titleLabel?.font = .systemFont(ofSize: 16)
+            view.addSubview(restoreButton)
+    }
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -135,30 +144,7 @@ extension PayScreen {
     }
     
     private func makeSlideControllers() {
-        slideControllers = slides.map { slide in
-            let viewController = UIViewController()
-            let imageView = UIImageView(image: slide.image)
-            imageView.contentMode = .scaleAspectFit
-            let label = UILabel()
-            label.attributedText = slide.title
-            label.numberOfLines = 0
-            label.textAlignment = .center
-            
-            viewController.view.addSubview(label)
-            viewController.view.addSubview(imageView)
-            
-            label.snp.makeConstraints { make in
-                make.top.equalTo(viewController.view.safeAreaLayoutGuide).offset(24)
-                make.leading.trailing.equalToSuperview().inset(32)
-            }
-            imageView.snp.makeConstraints { make in
-                make.centerY.equalToSuperview()
-                make.centerX.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(0.9)
-                make.height.equalTo(imageView.snp.width).multipliedBy(1.0)
-            }
-            return viewController
-        }
+        slideControllers = slides.map { SlideViewController(slide: $0) }
     }
     
     func setupPageViewController() {
@@ -255,8 +241,18 @@ extension PayScreen {
     }
     
     private func layoutAll() {
+        closeButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.size.equalTo(24)
+        }
+        restoreButton.snp.makeConstraints { make in
+            make.centerY.equalTo(closeButton)
+            make.trailing.equalToSuperview().inset(16)
+        }
         pageViewController.view.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(closeButton.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(bottomContainer.snp.top)
         }
         pageControl.snp.makeConstraints { make in
@@ -265,10 +261,9 @@ extension PayScreen {
         }
         bottomContainer.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(view.bounds.height * 0.35)
+            make.height.equalTo(view.bounds.height * 0.3)
             make.width.equalToSuperview()
         }
-        
         priceLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(36)
             make.leading.trailing.equalToSuperview().inset(16)

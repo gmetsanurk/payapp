@@ -12,6 +12,7 @@
 		668B74702E1EE14200DBD4F3 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B746F2E1EE13C00DBD4F3 /* AppColors.swift */; };
 		668B74822E1EE78E00DBD4F3 /* PayScreenAdaptyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */; };
 		668B74892E1FB85200DBD4F3 /* AppGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */; };
+		668B748B2E1FC02C00DBD4F3 /* PayScreenSlideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B748A2E1FC02400DBD4F3 /* PayScreenSlideController.swift */; };
 		66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */; };
 		66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */; };
 		66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		668B746F2E1EE13C00DBD4F3 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenAdaptyProtocol.swift; sourceTree = "<group>"; };
 		668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGeometry.swift; sourceTree = "<group>"; };
+		668B748A2E1FC02400DBD4F3 /* PayScreenSlideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenSlideController.swift; sourceTree = "<group>"; };
 		66A1A5882E17CAE80095FBF8 /* payapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = payapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				66A1A5FB2E1BB2D80095FBF8 /* PayScreen.swift */,
 				668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */,
 				668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */,
+				668B748A2E1FC02400DBD4F3 /* PayScreenSlideController.swift */,
 			);
 			path = PayScreen;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				66A1A6012E1C31720095FBF8 /* PayViewModel.swift in Sources */,
 				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
 				66A1A6072E1C31D90095FBF8 /* Logger.swift in Sources */,
+				668B748B2E1FC02C00DBD4F3 /* PayScreenSlideController.swift in Sources */,
 				668B74822E1EE78E00DBD4F3 /* PayScreenAdaptyProtocol.swift in Sources */,
 				668B74682E1E733B00DBD4F3 /* MainTabBarController.swift in Sources */,
 				668B74702E1EE14200DBD4F3 /* AppColors.swift in Sources */,
