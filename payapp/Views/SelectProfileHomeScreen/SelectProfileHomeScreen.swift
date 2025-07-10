@@ -16,15 +16,10 @@ final class SelectProfileHomeScreen: UIViewController {
     private let coinsButton = UIButton(type: .custom)
     private var segmentedControl = UISegmentedControl()
     
-    struct Constants {
-        static let itemsPerLine = 2
-        static let padding: CGFloat = 16
-    }
-    
     private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>?
     
     private lazy var viewModel = HomeViewModel(view: self)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -46,6 +41,7 @@ final class SelectProfileHomeScreen: UIViewController {
 }
 
 extension SelectProfileHomeScreen {
+    
     func setupUI() {
         setupHeaderView()
         setupTitleLabel()
@@ -59,29 +55,37 @@ extension SelectProfileHomeScreen {
     
     func createProfilesList() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: itemWidth, height: 200)
-        layout.minimumLineSpacing = Constants.padding
-        layout.sectionInset = .init(top: Constants.padding, left: Constants.padding, bottom: Constants.padding, right: Constants.padding)
+        layout.itemSize = .init(width: itemWidth, height: AppGeometry.SelectProfileHome.cellHeight)
+        layout.minimumLineSpacing = AppGeometry.SelectProfileHome.padding
+        layout.sectionInset = .init(
+            top: AppGeometry.SelectProfileHome.padding,
+            left: AppGeometry.SelectProfileHome.padding,
+            bottom: AppGeometry.SelectProfileHome.padding,
+            right: AppGeometry.SelectProfileHome.padding
+        )
         
         let profilesList = SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>(
-            frame: .zero, collectionViewLayout: layout,
-            handler: {
-            [unowned self] in
-                onCellSelected()
-        })
+            frame: .zero,
+            collectionViewLayout: layout,
+            handler: { [unowned self] in onCellSelected() }
+        )
+        
         profilesList.backgroundColor = .white
         view.addSubview(profilesList)
         self.selectProfilesList = profilesList
     }
     
     private var itemWidth: CGFloat {
-        view.bounds.width/CGFloat(Constants.itemsPerLine) - Constants.padding * 2
+        let padding = AppGeometry.SelectProfileHome.padding
+        return view.bounds.width / CGFloat(AppGeometry.SelectProfileHome.itemsPerLine) - padding * 2
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        (selectProfilesList?.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = .init(width: itemWidth, height: 200)
+        (selectProfilesList?.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = .init(
+            width: itemWidth,
+            height: AppGeometry.SelectProfileHome.cellHeight
+        )
     }
     
     func setupHeaderView() {
@@ -90,12 +94,10 @@ extension SelectProfileHomeScreen {
     }
     
     func setupTitleLabel() {
-        // TODO: localize
-        titleLabel.text = "Feed"
+        titleLabel.text = "feed.title".localized
         titleLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleLabel.textColor = .black
         headerView.addSubview(titleLabel)
-        
     }
     
     func setupCoinsButton() {
@@ -106,7 +108,12 @@ extension SelectProfileHomeScreen {
     }
     
     private func setupSegmentedControl() -> UISegmentedControl {
-        let items = ["Online", "Popular", "New", "Following"]
+        let items = [
+            "feed.segment.online".localized,
+            "feed.segment.popular".localized,
+            "feed.segment.new".localized,
+            "feed.segment.following".localized
+        ]
         let sc = UISegmentedControl(items: items)
         sc.backgroundColor = .clear
         sc.selectedSegmentTintColor = .white
@@ -121,22 +128,26 @@ extension SelectProfileHomeScreen {
     }
     
     func makeConstraints() {
+        let padding = AppGeometry.SelectProfileHome.padding
         
         headerView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(segmentedControl.snp.bottom).offset(Constants.padding/2.0)
+            make.bottom.equalTo(segmentedControl.snp.bottom).offset(padding * AppGeometry.SelectProfileHome.headerBottomOffsetMultiplier)
         }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(Constants.padding)
+            make.top.leading.equalToSuperview().inset(padding)
         }
+        
         coinsButton.snp.makeConstraints { make in
             make.centerY.equalTo(titleLabel)
-            make.trailing.equalToSuperview().inset(Constants.padding)
+            make.trailing.equalToSuperview().inset(padding)
         }
+        
         segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(Constants.padding)
+            make.top.equalTo(titleLabel.snp.bottom).offset(AppGeometry.SelectProfileHome.segmentedTopOffset)
+            make.leading.trailing.equalToSuperview().inset(padding)
         }
         
         selectProfilesList?.snp.makeConstraints { make in
@@ -145,5 +156,6 @@ extension SelectProfileHomeScreen {
         }
     }
 }
+
 
 extension SelectProfileHomeScreen: AnyScreen { }

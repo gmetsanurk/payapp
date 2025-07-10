@@ -16,11 +16,6 @@ final class PayScreen: UIViewController {
     
     private lazy var viewModel = PayViewModel(view: self)
     
-    private struct Slide {
-        let title: NSAttributedString
-        let image: UIImage?
-    }
-    
     private lazy var slides: [Slide] = []
     var slideControllers: [UIViewController] = []
     
@@ -29,8 +24,10 @@ final class PayScreen: UIViewController {
     private let bottomContainer = UIView()
     private let priceLabel = UILabel()
     private let detailLabel = UILabel()
-    private var subscribeButton = UIButton(type: .system)
     private let termsStack = UIStackView()
+    private var subscribeButton = UIButton(type: .system)
+    private let closeButton = UIButton(type: .system)
+    private let restoreButton = UIButton(type: .system)
     private let termsButton = UIButton(type: .system)
     private let privacyButton = UIButton(type: .system)
     
@@ -40,6 +37,8 @@ final class PayScreen: UIViewController {
         createSubscribeButton()
         createSlides()
         makeSlideControllers()
+        setupTopCloseButton()
+        setupTopRestoreButton()
         setupPageViewController()
         setupPageControl()
         setupBottomArea()
@@ -60,7 +59,7 @@ extension PayScreen {
     
     private func createSubscribeButton() {
         let button = UIButton(type: .system)
-        button.setTitle("Subscribe", for: .normal)
+        button.setTitle("subscribe.button".localized, for: .normal)
         button.addAction(UIAction { [unowned self] _ in
             self.didTapSubscribe()
         }, for: .primaryActionTriggered)
@@ -72,37 +71,65 @@ extension PayScreen {
             do {
                 try await fetchAdaptyPaywall()
             } catch {
-                showAlert(title: "Error", message: error.localizedDescription)
+                showAlert(title: "alert.error.title".localized, message: error.localizedDescription)
             }
         }
     }
     
-}
-
-extension PayScreen {
+    private func setupTopCloseButton() {
+        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        closeButton.tintColor = .darkGray
+        closeButton.addAction(UIAction { [unowned self] _ in
+            dismiss(animated: true, completion: nil)
+        }, for: .primaryActionTriggered)
+        view.addSubview(closeButton)
+    }
+    
+    private func setupTopRestoreButton() {
+        restoreButton.setTitle("restore.button".localized, for: .normal)
+        restoreButton.setTitleColor(.lightGray, for: .normal)
+        restoreButton.titleLabel?.font = .systemFont(ofSize: 16)
+        view.addSubview(restoreButton)
+    }
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(.init(title: "OK", style: .default))
+        alert.addAction(.init(title: "alert.ok".localized, style: .default))
         present(alert, animated: true)
     }
     
     func createSlides() {
         let slidesArray: [Slide] = [
             .init(
-                title: setupSlideAttributes("Get ", highlight: "599 Coins", suffix: " NOW And Every Week"),
+                title: setupSlideAttributes(
+                    "slide.1.prefix".localized,
+                    highlight: "slide.1.highlight".localized,
+                    suffix: "slide.1.suffix".localized
+                ),
                 image: UIImage(named: "payscreen-1")
             ),
             .init(
-                title: setupSlideAttributes("Send ", highlight: "Unlimited Messages", suffix: ""),
+                title: setupSlideAttributes(
+                    "slide.2.prefix".localized,
+                    highlight: "slide.2.highlight".localized,
+                    suffix: ""
+                ),
                 image: UIImage(named: "payscreen-2")
             ),
             .init(
-                title: setupSlideAttributes("Turn Off ", highlight: "Camera & Sound", suffix: ""),
+                title: setupSlideAttributes(
+                    "slide.3.prefix".localized,
+                    highlight: "slide.3.highlight".localized,
+                    suffix: ""
+                ),
                 image: UIImage(named: "payscreen-3")
             ),
             .init(
-                title: setupSlideAttributes("Mark Your Profile With ", highlight: "VIP Status", suffix: ""),
+                title: setupSlideAttributes(
+                    "slide.4.prefix".localized,
+                    highlight: "slide.4.highlight".localized,
+                    suffix: ""
+                ),
                 image: UIImage(named: "payscreen-4")
             )
         ]
@@ -113,52 +140,29 @@ extension PayScreen {
         let full = NSMutableAttributedString(
             string: prefix,
             attributes: [
-                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.slideTitleFontSize, weight: .bold),
                 .foregroundColor: UIColor.black
-                ]
+            ]
         )
         full.append(.init(
             string: highlight,
             attributes: [
-                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.slideTitleFontSize, weight: .bold),
                 .foregroundColor: AppColors.pinkHighlightColor
             ]
         ))
         full.append(.init(
             string: suffix,
             attributes: [
-                .font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.slideTitleFontSize, weight: .bold),
                 .foregroundColor: UIColor.black
-                ]
+            ]
         ))
         return full
     }
     
     private func makeSlideControllers() {
-        slideControllers = slides.map { slide in
-            let viewController = UIViewController()
-            let imageView = UIImageView(image: slide.image)
-            imageView.contentMode = .scaleAspectFit
-            let label = UILabel()
-            label.attributedText = slide.title
-            label.numberOfLines = 0
-            label.textAlignment = .center
-            
-            viewController.view.addSubview(label)
-            viewController.view.addSubview(imageView)
-            
-            label.snp.makeConstraints { make in
-                make.top.equalTo(viewController.view.safeAreaLayoutGuide).offset(24)
-                make.leading.trailing.equalToSuperview().inset(32)
-            }
-            imageView.snp.makeConstraints { make in
-                make.centerY.equalToSuperview()
-                make.centerX.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(0.9)
-                make.height.equalTo(imageView.snp.width).multipliedBy(1.0)
-            }
-            return viewController
-        }
+        slideControllers = slides.map { SlideViewController(slide: $0) }
     }
     
     func setupPageViewController() {
@@ -192,40 +196,62 @@ extension PayScreen {
     
     private func setupBottomArea() {
         view.addSubview(bottomContainer)
-        view.addSubview(subscribeButton)
         
+        configureBottomContainer()
+        configurePriceLabels()
+        configureSubscribeButton()
+        configureTermsStack()
+        addBottomSubviews()
+    }
+    
+    private func configureBottomContainer() {
         bottomContainer.backgroundColor = AppColors.bottomContainerColor
-        bottomContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        priceLabel.text = "Subscribe for $0.99 weekly"
-        priceLabel.textColor = .white
+    }
+    
+    private func configurePriceLabels() {
+        priceLabel.text = "subscribe.priceLabel".localized
         priceLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        priceLabel.textColor = .white
         priceLabel.textAlignment = .center
         
-        detailLabel.text = "Plan automatically renews. Cancel anytime."
-        detailLabel.textColor = .white
+        detailLabel.text = "subscribe.detailLabel".localized
         detailLabel.font = .systemFont(ofSize: 12)
+        detailLabel.textColor = .white
         detailLabel.textAlignment = .center
-        
-        subscribeButton.setTitle("Subscribe", for: .normal)
+    }
+    
+    private func configureSubscribeButton() {
+        subscribeButton.setTitle("subscribe.button".localized, for: .normal)
         subscribeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         subscribeButton.backgroundColor = AppColors.subscribeButtonColor
-        subscribeButton.layer.cornerRadius = 22
+        subscribeButton.layer.cornerRadius = AppGeometry.PayScreen.subscribeCornerRadius
         subscribeButton.setTitleColor(.white, for: .normal)
-        
-        termsButton.setTitle("Terms of Use", for: .normal)
-        termsButton.titleLabel?.font = .systemFont(ofSize: 12)
-        termsButton.setTitleColor(.white, for: .normal)
-        
-        privacyButton.setTitle("Privacy & Policy", for: .normal)
-        privacyButton.titleLabel?.font = .systemFont(ofSize: 12)
-        privacyButton.setTitleColor(.white, for: .normal)
+    }
+    
+    private func configureTermsStack() {
+        let underlineAttr: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: AppGeometry.PayScreen.termsFontSize),
+            .foregroundColor: UIColor.white,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        termsButton.setAttributedTitle(
+            NSAttributedString(string: "terms.of.use".localized, attributes: underlineAttr),
+            for: .normal
+        )
+        privacyButton.setAttributedTitle(
+            NSAttributedString(string: "privacy.policy".localized, attributes: underlineAttr),
+            for: .normal
+        )
         
         termsStack.axis = .horizontal
-        termsStack.distribution = .equalSpacing
+        termsStack.distribution = .fill
+        termsStack.spacing = AppGeometry.PayScreen.termsSpacing
+        
         termsStack.addArrangedSubview(termsButton)
         termsStack.addArrangedSubview(privacyButton)
-        
+    }
+    
+    private func addBottomSubviews() {
         bottomContainer.addSubview(priceLabel)
         bottomContainer.addSubview(detailLabel)
         bottomContainer.addSubview(subscribeButton)
@@ -233,37 +259,57 @@ extension PayScreen {
     }
     
     private func layoutAll() {
+        
+        closeButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(AppGeometry.PayScreen.closeTopOffset)
+            make.leading.equalToSuperview().offset(AppGeometry.PayScreen.sideInset)
+            make.size.equalTo(AppGeometry.PayScreen.closeButtonSize)
+        }
+        
+        restoreButton.snp.makeConstraints { make in
+            make.centerY.equalTo(closeButton)
+            make.trailing.equalToSuperview().inset(AppGeometry.PayScreen.sideInset)
+        }
+        
         pageViewController.view.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(closeButton.snp.bottom).offset(AppGeometry.PayScreen.closeToPageOffset)
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(bottomContainer.snp.top)
         }
+        
         pageControl.snp.makeConstraints { make in
-            make.top.equalTo(pageViewController.view.snp.bottom).offset(-20)
+            make.top.equalTo(pageViewController.view.snp.bottom).offset(AppGeometry.PayScreen.pageControlOffset)
             make.centerX.equalToSuperview()
         }
+        
         bottomContainer.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(view.bounds.height * 0.35)
+            make.height.equalTo(view.bounds.height * AppGeometry.PayScreen.bottomContainerHeightMultiplier)
+            make.width.equalToSuperview()
         }
         
         priceLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().offset(AppGeometry.PayScreen.priceTopOffset)
+            make.leading.trailing.equalToSuperview().inset(AppGeometry.PayScreen.sideInset)
         }
+        
         detailLabel.snp.makeConstraints { make in
-            make.top.equalTo(priceLabel.snp.bottom).offset(4)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(priceLabel.snp.bottom).offset(AppGeometry.PayScreen.priceToDetailOffset)
+            make.leading.trailing.equalToSuperview().inset(AppGeometry.PayScreen.sideInset)
         }
+        
         subscribeButton.snp.makeConstraints { make in
-            make.top.equalTo(detailLabel.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(32)
-            make.height.equalTo(44)
+            make.top.equalTo(detailLabel.snp.bottom).offset(AppGeometry.PayScreen.detailToSubscribeOffset)
+            make.leading.trailing.equalToSuperview().inset(AppGeometry.PayScreen.subscribeSideInset)
+            make.height.equalTo(AppGeometry.PayScreen.subscribeHeight)
         }
+        
         termsStack.snp.makeConstraints { make in
-            make.top.equalTo(subscribeButton.snp.bottom).offset(12)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(AppGeometry.PayScreen.subscribeToTermsOffset)
             make.centerX.equalToSuperview()
         }
     }
+    
 }
 
 extension PayScreen: AnyScreen {

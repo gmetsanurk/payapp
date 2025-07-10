@@ -11,6 +11,10 @@
 		668B746A2E1EAB0400DBD4F3 /* PayScreenPWProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */; };
 		668B74702E1EE14200DBD4F3 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B746F2E1EE13C00DBD4F3 /* AppColors.swift */; };
 		668B74822E1EE78E00DBD4F3 /* PayScreenAdaptyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */; };
+		668B74892E1FB85200DBD4F3 /* AppGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */; };
+		668B748B2E1FC02C00DBD4F3 /* PayScreenSlideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B748A2E1FC02400DBD4F3 /* PayScreenSlideController.swift */; };
+		668B74A02E1FE25A00DBD4F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 668B749E2E1FE25A00DBD4F3 /* Localizable.strings */; };
+		668B74A42E1FE38600DBD4F3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74A32E1FE37D00DBD4F3 /* String+Extension.swift */; };
 		66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */; };
 		66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */; };
 		66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */; };
@@ -39,6 +43,11 @@
 		668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenPWProtocol.swift; sourceTree = "<group>"; };
 		668B746F2E1EE13C00DBD4F3 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenAdaptyProtocol.swift; sourceTree = "<group>"; };
+		668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGeometry.swift; sourceTree = "<group>"; };
+		668B748A2E1FC02400DBD4F3 /* PayScreenSlideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenSlideController.swift; sourceTree = "<group>"; };
+		668B749F2E1FE25A00DBD4F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		668B74A12E1FE28600DBD4F3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		668B74A32E1FE37D00DBD4F3 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		66A1A5882E17CAE80095FBF8 /* payapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = payapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		668B74A22E1FE36C00DBD4F3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				668B74A32E1FE37D00DBD4F3 /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		66A1A57F2E17CAE80095FBF8 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +118,7 @@
 				66A1A5F42E19332F0095FBF8 /* Views */,
 				66A1A5F12E19316F0095FBF8 /* ViewModels */,
 				66A1A5CE2E1811B50095FBF8 /* Models */,
+				668B74A22E1FE36C00DBD4F3 /* Extensions */,
 				66A1A5E92E191FF10095FBF8 /* Resources */,
 				66A1A5B42E17D5BC0095FBF8 /* Info.plist */,
 			);
@@ -120,6 +138,7 @@
 			children = (
 				66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */,
 				66A1A5EA2E19208F0095FBF8 /* Data.json */,
+				668B749E2E1FE25A00DBD4F3 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -137,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				668B74672E1E732C00DBD4F3 /* MainTabBarController.swift */,
-				66A1A5FA2E1BB2BE0095FBF8 /* PayScreen */,
 				66A1A5F92E1BB28F0095FBF8 /* SelectProfileHomeScreen */,
+				66A1A5FA2E1BB2BE0095FBF8 /* PayScreen */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +178,7 @@
 				66A1A5FB2E1BB2D80095FBF8 /* PayScreen.swift */,
 				668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */,
 				668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */,
+				668B748A2E1FC02400DBD4F3 /* PayScreenSlideController.swift */,
 			);
 			path = PayScreen;
 			sourceTree = "<group>";
@@ -167,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				668B746F2E1EE13C00DBD4F3 /* AppColors.swift */,
+				668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */,
 				66A1A6022E1C31920095FBF8 /* AppConstants.swift */,
 				66A1A6042E1C31B30095FBF8 /* UserManager.swift */,
 				66A1A6062E1C31D60095FBF8 /* Logger.swift */,
@@ -223,6 +244,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 66A1A57F2E17CAE80095FBF8;
 			minimizedProjectReferenceProxies = 1;
@@ -247,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */,
+				668B74A02E1FE25A00DBD4F3 /* Localizable.strings in Resources */,
 				66A1A5EB2E1920980095FBF8 /* Data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,19 +289,34 @@
 				66A1A5CD2E1811B30095FBF8 /* ProfileModel.swift in Sources */,
 				668B746A2E1EAB0400DBD4F3 /* PayScreenPWProtocol.swift in Sources */,
 				66A1A6052E1C31B60095FBF8 /* UserManager.swift in Sources */,
+				668B74A42E1FE38600DBD4F3 /* String+Extension.swift in Sources */,
 				66A1A6012E1C31720095FBF8 /* PayViewModel.swift in Sources */,
 				66A1A5CB2E1800F40095FBF8 /* SelectProfileHomeCollectionView.swift in Sources */,
 				66A1A6072E1C31D90095FBF8 /* Logger.swift in Sources */,
+				668B748B2E1FC02C00DBD4F3 /* PayScreenSlideController.swift in Sources */,
 				668B74822E1EE78E00DBD4F3 /* PayScreenAdaptyProtocol.swift in Sources */,
 				668B74682E1E733B00DBD4F3 /* MainTabBarController.swift in Sources */,
 				668B74702E1EE14200DBD4F3 /* AppColors.swift in Sources */,
 				66A1A5F32E1931950095FBF8 /* HomeViewModel.swift in Sources */,
 				66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */,
 				66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */,
+				668B74892E1FB85200DBD4F3 /* AppGeometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		668B749E2E1FE25A00DBD4F3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				668B749F2E1FE25A00DBD4F3 /* en */,
+				668B74A12E1FE28600DBD4F3 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		66A1A59C2E17CAE90095FBF8 /* Debug */ = {
@@ -307,7 +345,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -338,7 +376,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -13,22 +13,22 @@ final class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         let liveVC = SelectProfileHomeScreen()
-        liveVC.tabBarItem = UITabBarItem(title: "Live",
+        liveVC.tabBarItem = UITabBarItem(title: "tabbar.live".localized,
                                          image: UIImage(named: "live"),
                                          selectedImage: nil)
         
         let feedVC = SelectProfileHomeScreen()
-        feedVC.tabBarItem = UITabBarItem(title: "Feed",
+        feedVC.tabBarItem = UITabBarItem(title: "tabbar.feed".localized,
                                          image: UIImage(named: "feed"),
                                          selectedImage: nil)
         
         let chatVC = SelectProfileHomeScreen()
-        chatVC.tabBarItem = UITabBarItem(title: "Chat",
+        chatVC.tabBarItem = UITabBarItem(title: "tabbar.chat".localized,
                                          image: UIImage(named: "chat"),
                                          selectedImage: nil)
         
         let profileVC = SelectProfileHomeScreen()
-        profileVC.tabBarItem = UITabBarItem(title: "Profile",
+        profileVC.tabBarItem = UITabBarItem(title: "tabbar.profile".localized,
                                             image: UIImage(named: "profile"),
                                             selectedImage: nil)
         
@@ -38,9 +38,7 @@ final class MainTabBarController: UITabBarController {
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         tabBar.standardAppearance = appearance
-        if #available(iOS 15.0, *) {
-            tabBar.scrollEdgeAppearance = appearance
-        }
+        tabBar.scrollEdgeAppearance = appearance
         
         tabBar.tintColor = .black
         tabBar.unselectedItemTintColor = UIColor(white: 0.8, alpha: 1)

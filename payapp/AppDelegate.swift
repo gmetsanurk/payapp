@@ -39,10 +39,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Adapty.logLevel = .verbose
         Adapty.activate(with: configuration)
-
-        if #available(iOS 15.0, *) {
-            AdaptyUI.activate()
-        }
+        AdaptyUI.activate()
         
         setupWindow()
         return true

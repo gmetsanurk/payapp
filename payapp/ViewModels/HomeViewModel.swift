@@ -1,5 +1,5 @@
 //
-//  HomeVuewModel.swift
+//  HomeViewModel.swift
 //  payapp
 //
 //  Created by Georgy on 2025-07-05.
@@ -8,6 +8,7 @@
 import UIKit
 import Swinject
 
+@MainActor
 protocol AnyScreen {
     func present(screen: UIViewController)
 }
