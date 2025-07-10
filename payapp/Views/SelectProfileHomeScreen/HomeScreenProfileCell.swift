@@ -129,36 +129,37 @@ extension HomeScreenProfileCell {
     
     func arrangeStatus() {
         statusImageView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(8)
+            make.top.leading.equalToSuperview().inset(AppGeometry.FeedCard.commonInset)
         }
     }
-    
+
     func arrangeFlagNameAgeLabel() {
         flagNameAgeLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(36)
+            make.bottom.equalToSuperview().inset(AppGeometry.FeedCard.flagLabelBottomInset)
         }
     }
-    
+
     func arrangeChatButton() {
         chatButton.snp.makeConstraints { make in
-            make.leading.bottom.equalToSuperview().inset(8)
-            make.size.equalTo(CGSize(width: 28, height: 28))
+            make.leading.bottom.equalToSuperview().inset(AppGeometry.FeedCard.commonInset)
+            make.size.equalTo(AppGeometry.FeedCard.buttonSize)
         }
     }
-    
+
     func arrangeVideoButton() {
         videoButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(8)
-            make.size.equalTo(CGSize(width: 28, height: 28))
+            make.bottom.equalToSuperview().inset(AppGeometry.FeedCard.commonInset)
+            make.size.equalTo(AppGeometry.FeedCard.buttonSize)
         }
     }
-    
+
     func arrangeLikeButton() {
         likeButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalToSuperview().inset(8)
-            make.size.equalTo(CGSize(width: 28, height: 28))
+            make.trailing.bottom.equalToSuperview().inset(AppGeometry.FeedCard.commonInset)
+            make.size.equalTo(AppGeometry.FeedCard.buttonSize)
         }
     }
+
 }
