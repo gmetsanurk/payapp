@@ -37,7 +37,8 @@ final class PayScreen: UIViewController {
         createSubscribeButton()
         createSlides()
         makeSlideControllers()
-        setupTopButtons()
+        setupTopCloseButton()
+        setupTopRestoreButton()
         setupPageViewController()
         setupPageControl()
         setupBottomArea()
@@ -75,19 +76,20 @@ extension PayScreen {
         }
     }
     
-}
-
-extension PayScreen {
+    private func setupTopCloseButton() {
+        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        closeButton.tintColor = .darkGray
+        closeButton.addAction(UIAction { [unowned self] _ in
+            dismiss(animated: true, completion: nil)
+        }, for: .primaryActionTriggered)
+        view.addSubview(closeButton)
+    }
     
-    private func setupTopButtons() {
-            closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-            closeButton.tintColor = .darkGray
-            view.addSubview(closeButton)
-            
-            restoreButton.setTitle("Restore", for: .normal)
-            restoreButton.setTitleColor(.lightGray, for: .normal)
-            restoreButton.titleLabel?.font = .systemFont(ofSize: 16)
-            view.addSubview(restoreButton)
+    private func setupTopRestoreButton() {
+        restoreButton.setTitle("Restore", for: .normal)
+        restoreButton.setTitleColor(.lightGray, for: .normal)
+        restoreButton.titleLabel?.font = .systemFont(ofSize: 16)
+        view.addSubview(restoreButton)
     }
     
     func showAlert(title: String, message: String) {
@@ -124,7 +126,7 @@ extension PayScreen {
             attributes: [
                 .font: UIFont.systemFont(ofSize: 24, weight: .bold),
                 .foregroundColor: UIColor.black
-                ]
+            ]
         )
         full.append(.init(
             string: highlight,
@@ -138,7 +140,7 @@ extension PayScreen {
             attributes: [
                 .font: UIFont.systemFont(ofSize: 24, weight: .bold),
                 .foregroundColor: UIColor.black
-                ]
+            ]
         ))
         return full
     }
@@ -185,11 +187,11 @@ extension PayScreen {
         configureTermsStack()
         addBottomSubviews()
     }
-
+    
     private func configureBottomContainer() {
         bottomContainer.backgroundColor = AppColors.bottomContainerColor
     }
-
+    
     private func configurePriceLabels() {
         priceLabel.text = "Subscribe for $0.99 weekly"
         priceLabel.font = .systemFont(ofSize: 16, weight: .medium)
@@ -201,7 +203,7 @@ extension PayScreen {
         detailLabel.textColor = .white
         detailLabel.textAlignment = .center
     }
-
+    
     private func configureSubscribeButton() {
         subscribeButton.setTitle("Subscribe", for: .normal)
         subscribeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
@@ -209,7 +211,7 @@ extension PayScreen {
         subscribeButton.layer.cornerRadius = 28
         subscribeButton.setTitleColor(.white, for: .normal)
     }
-
+    
     private func configureTermsStack() {
         let underlineAttr: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 12),
@@ -224,7 +226,7 @@ extension PayScreen {
             NSAttributedString(string: "Privacy & Policy", attributes: underlineAttr),
             for: .normal
         )
-
+        
         termsStack.axis = .horizontal
         termsStack.distribution = .fill
         termsStack.spacing = 150
@@ -232,7 +234,7 @@ extension PayScreen {
         termsStack.addArrangedSubview(termsButton)
         termsStack.addArrangedSubview(privacyButton)
     }
-
+    
     private func addBottomSubviews() {
         bottomContainer.addSubview(priceLabel)
         bottomContainer.addSubview(detailLabel)
