@@ -42,9 +42,7 @@ final class PayViewModel: NSObject, ObservableObject, AdaptyDelegate {
     // MARK: AdaptyDelegate
     func didLoadLatestProfile(_ profile: AdaptyProfile) {
         Task {
-            await MainActor.run {
-                self.profile = profile
-            }
+            self.profile = profile
         }
     }
 }

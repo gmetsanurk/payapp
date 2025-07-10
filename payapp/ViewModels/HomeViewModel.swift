@@ -1,5 +1,5 @@
 //
-//  HomeVuewModel.swift
+//  HomeViewModel.swift
 //  payapp
 //
 //  Created by Georgy on 2025-07-05.
