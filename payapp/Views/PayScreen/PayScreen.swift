@@ -59,7 +59,7 @@ extension PayScreen {
     
     private func createSubscribeButton() {
         let button = UIButton(type: .system)
-        button.setTitle("Subscribe", for: .normal)
+        button.setTitle("subscribe.button".localized, for: .normal)
         button.addAction(UIAction { [unowned self] _ in
             self.didTapSubscribe()
         }, for: .primaryActionTriggered)
@@ -71,7 +71,7 @@ extension PayScreen {
             do {
                 try await fetchAdaptyPaywall()
             } catch {
-                showAlert(title: "Error", message: error.localizedDescription)
+                showAlert(title: "alert.error.title".localized, message: error.localizedDescription)
             }
         }
     }
@@ -86,7 +86,7 @@ extension PayScreen {
     }
     
     private func setupTopRestoreButton() {
-        restoreButton.setTitle("Restore", for: .normal)
+        restoreButton.setTitle("restore.button".localized, for: .normal)
         restoreButton.setTitleColor(.lightGray, for: .normal)
         restoreButton.titleLabel?.font = .systemFont(ofSize: 16)
         view.addSubview(restoreButton)
@@ -94,26 +94,42 @@ extension PayScreen {
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(.init(title: "OK", style: .default))
+        alert.addAction(.init(title: "alert.ok".localized, style: .default))
         present(alert, animated: true)
     }
     
     func createSlides() {
         let slidesArray: [Slide] = [
             .init(
-                title: setupSlideAttributes("Get ", highlight: "599 Coins", suffix: " NOW And Every Week"),
+                title: setupSlideAttributes(
+                    "slide.1.prefix".localized,
+                    highlight: "slide.1.highlight".localized,
+                    suffix: "slide.1.suffix".localized
+                ),
                 image: UIImage(named: "payscreen-1")
             ),
             .init(
-                title: setupSlideAttributes("Send ", highlight: "Unlimited Messages", suffix: ""),
+                title: setupSlideAttributes(
+                    "slide.2.prefix".localized,
+                    highlight: "slide.2.highlight".localized,
+                    suffix: ""
+                ),
                 image: UIImage(named: "payscreen-2")
             ),
             .init(
-                title: setupSlideAttributes("Turn Off ", highlight: "Camera & Sound", suffix: ""),
+                title: setupSlideAttributes(
+                    "slide.3.prefix".localized,
+                    highlight: "slide.3.highlight".localized,
+                    suffix: ""
+                ),
                 image: UIImage(named: "payscreen-3")
             ),
             .init(
-                title: setupSlideAttributes("Mark Your Profile With ", highlight: "VIP Status", suffix: ""),
+                title: setupSlideAttributes(
+                    "slide.4.prefix".localized,
+                    highlight: "slide.4.highlight".localized,
+                    suffix: ""
+                ),
                 image: UIImage(named: "payscreen-4")
             )
         ]

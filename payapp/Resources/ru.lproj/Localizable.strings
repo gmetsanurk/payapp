@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  payapp
+
+  Created by Georgy on 2025-07-10.
+  
+*/
+
+"tabbar.live" = "Прямой эфир";
+"tabbar.feed" = "Лента";
+"tabbar.chat" = "Чат";
+"tabbar.profile" = "Профиль";

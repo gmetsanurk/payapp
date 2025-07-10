@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  payapp
+
+  Created by Georgy on 2025-07-10.
+  
+*/
+
+
+"tabbar.live" = "Live";
+"tabbar.feed" = "Feed";
+"tabbar.chat" = "Chat";
+"tabbar.profile" = "profile";
+
+"subscribe.button" = "Subscribe";
+"restore.button" = "Restore";
+"alert.ok" = "OK";
+"alert.error.title" = "Error";
+
+"slide.1.prefix" = "Get ";
+"slide.1.highlight" = "599 Coins";
+"slide.1.suffix" = " NOW And Every Week";
+
+"slide.2.prefix" = "Send ";
+"slide.2.highlight" = "Unlimited Messages";
+
+"slide.3.prefix" = "Turn Off ";
+"slide.3.highlight" = "Camera & Sound";
+
+"slide.4.prefix" = "Mark Your Profile With ";
+"slide.4.highlight" = "VIP Status";
