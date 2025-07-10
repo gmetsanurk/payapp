@@ -16,11 +16,6 @@ final class SelectProfileHomeScreen: UIViewController {
     private let coinsButton = UIButton(type: .custom)
     private var segmentedControl = UISegmentedControl()
     
-    struct Constants {
-        static let itemsPerLine = 2
-        static let padding: CGFloat = 16
-    }
-    
     private weak var selectProfilesList:  SelectProfileHomeCollectionView<HomeScreenProfileCell, CellDataType>?
     
     private lazy var viewModel = HomeViewModel(view: self)
