@@ -1,6 +1,6 @@
 # PayApp
 
-**PayApp** is a Swift 6 mobile application for monetized user interactions and purchases.
+**PayApp** is a mobile application for monetized user interactions and purchases.
 
 ## Features
 
@@ -42,12 +42,13 @@
 
 ## Requirements
 
-- iOS 15.6 or later  
-- Swift 6  
+- iOS 15.6 or later   
 - Xcode 15+
 
 ## Dependencies
 
 - [Adapty](https://github.com/adaptyteam/AdaptySDK) — paywall & subscription handling  
-- [SnapKit](https://github.com/SnapKit/SnapKit) — UI layout engine  
+- [SnapKit](https://github.com/SnapKit/SnapKit) — UI layout engine 
+
+- [Swinject](https://github.com/Swinject/Swinject) — Dependency injections  
 
