@@ -11,6 +11,7 @@
 		668B746A2E1EAB0400DBD4F3 /* PayScreenPWProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */; };
 		668B74702E1EE14200DBD4F3 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B746F2E1EE13C00DBD4F3 /* AppColors.swift */; };
 		668B74822E1EE78E00DBD4F3 /* PayScreenAdaptyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */; };
+		668B74892E1FB85200DBD4F3 /* AppGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */; };
 		66A1A5B72E17D5BC0095FBF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */; };
 		66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A1A5B52E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift */; };
 		66A1A5B92E17D5BC0095FBF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		668B74692E1EAB0200DBD4F3 /* PayScreenPWProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenPWProtocol.swift; sourceTree = "<group>"; };
 		668B746F2E1EE13C00DBD4F3 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		668B74812E1EE77A00DBD4F3 /* PayScreenAdaptyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayScreenAdaptyProtocol.swift; sourceTree = "<group>"; };
+		668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGeometry.swift; sourceTree = "<group>"; };
 		66A1A5882E17CAE80095FBF8 /* payapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = payapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A1A5B22E17D5BC0095FBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66A1A5B32E17D5BC0095FBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				668B746F2E1EE13C00DBD4F3 /* AppColors.swift */,
+				668B74882E1FB84E00DBD4F3 /* AppGeometry.swift */,
 				66A1A6022E1C31920095FBF8 /* AppConstants.swift */,
 				66A1A6042E1C31B30095FBF8 /* UserManager.swift */,
 				66A1A6062E1C31D60095FBF8 /* Logger.swift */,
@@ -275,6 +278,7 @@
 				66A1A5F32E1931950095FBF8 /* HomeViewModel.swift in Sources */,
 				66A1A5BD2E17F4B70095FBF8 /* HomeScreenProfileCell.swift in Sources */,
 				66A1A5B82E17D5BC0095FBF8 /* SelectProfileHomeScreen.swift in Sources */,
+				668B74892E1FB85200DBD4F3 /* AppGeometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

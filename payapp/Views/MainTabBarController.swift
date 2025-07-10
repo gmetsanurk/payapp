@@ -38,9 +38,7 @@ final class MainTabBarController: UITabBarController {
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         tabBar.standardAppearance = appearance
-        if #available(iOS 15.0, *) {
-            tabBar.scrollEdgeAppearance = appearance
-        }
+        tabBar.scrollEdgeAppearance = appearance
         
         tabBar.tintColor = .black
         tabBar.unselectedItemTintColor = UIColor(white: 0.8, alpha: 1)

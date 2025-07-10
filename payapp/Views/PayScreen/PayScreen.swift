@@ -192,40 +192,62 @@ extension PayScreen {
     
     private func setupBottomArea() {
         view.addSubview(bottomContainer)
-        view.addSubview(subscribeButton)
         
+        configureBottomContainer()
+        configurePriceLabels()
+        configureSubscribeButton()
+        configureTermsStack()
+        addBottomSubviews()
+    }
+
+    private func configureBottomContainer() {
         bottomContainer.backgroundColor = AppColors.bottomContainerColor
-        bottomContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
+    }
+
+    private func configurePriceLabels() {
         priceLabel.text = "Subscribe for $0.99 weekly"
-        priceLabel.textColor = .white
         priceLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        priceLabel.textColor = .white
         priceLabel.textAlignment = .center
         
         detailLabel.text = "Plan automatically renews. Cancel anytime."
-        detailLabel.textColor = .white
         detailLabel.font = .systemFont(ofSize: 12)
+        detailLabel.textColor = .white
         detailLabel.textAlignment = .center
-        
+    }
+
+    private func configureSubscribeButton() {
         subscribeButton.setTitle("Subscribe", for: .normal)
         subscribeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         subscribeButton.backgroundColor = AppColors.subscribeButtonColor
-        subscribeButton.layer.cornerRadius = 22
+        subscribeButton.layer.cornerRadius = 28
         subscribeButton.setTitleColor(.white, for: .normal)
-        
-        termsButton.setTitle("Terms of Use", for: .normal)
-        termsButton.titleLabel?.font = .systemFont(ofSize: 12)
-        termsButton.setTitleColor(.white, for: .normal)
-        
-        privacyButton.setTitle("Privacy & Policy", for: .normal)
-        privacyButton.titleLabel?.font = .systemFont(ofSize: 12)
-        privacyButton.setTitleColor(.white, for: .normal)
-        
+    }
+
+    private func configureTermsStack() {
+        let underlineAttr: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 12),
+            .foregroundColor: UIColor.white,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        termsButton.setAttributedTitle(
+            NSAttributedString(string: "Terms of Use", attributes: underlineAttr),
+            for: .normal
+        )
+        privacyButton.setAttributedTitle(
+            NSAttributedString(string: "Privacy & Policy", attributes: underlineAttr),
+            for: .normal
+        )
+
         termsStack.axis = .horizontal
-        termsStack.distribution = .equalSpacing
+        termsStack.distribution = .fill
+        termsStack.spacing = 150
+        
         termsStack.addArrangedSubview(termsButton)
         termsStack.addArrangedSubview(privacyButton)
-        
+    }
+
+    private func addBottomSubviews() {
         bottomContainer.addSubview(priceLabel)
         bottomContainer.addSubview(detailLabel)
         bottomContainer.addSubview(subscribeButton)
@@ -244,10 +266,11 @@ extension PayScreen {
         bottomContainer.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(view.bounds.height * 0.35)
+            make.width.equalToSuperview()
         }
         
         priceLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(36)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         detailLabel.snp.makeConstraints { make in
@@ -255,12 +278,12 @@ extension PayScreen {
             make.leading.trailing.equalToSuperview().inset(16)
         }
         subscribeButton.snp.makeConstraints { make in
-            make.top.equalTo(detailLabel.snp.bottom).offset(16)
+            make.top.equalTo(detailLabel.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview().inset(32)
-            make.height.equalTo(44)
+            make.height.equalTo(56)
         }
         termsStack.snp.makeConstraints { make in
-            make.top.equalTo(subscribeButton.snp.bottom).offset(12)
+            make.top.equalTo(subscribeButton.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
     }
