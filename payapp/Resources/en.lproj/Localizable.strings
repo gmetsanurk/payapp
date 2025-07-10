@@ -29,3 +29,9 @@
 
 "slide.4.prefix" = "Mark Your Profile With ";
 "slide.4.highlight" = "VIP Status";
+
+"subscribe.priceLabel" = "Subscribe for $0.99 weekly";
+"subscribe.detailLabel" = "Plan automatically renews. Cancel anytime.";
+"subscribe.button" = "Subscribe";
+"terms.of.use" = "Terms of Use";
+"privacy.policy" = "Privacy & Policy";

@@ -209,19 +209,19 @@ extension PayScreen {
     }
     
     private func configurePriceLabels() {
-        priceLabel.text = "Subscribe for $0.99 weekly"
+        priceLabel.text = "subscribe.priceLabel".localized
         priceLabel.font = .systemFont(ofSize: 16, weight: .medium)
         priceLabel.textColor = .white
         priceLabel.textAlignment = .center
         
-        detailLabel.text = "Plan automatically renews. Cancel anytime."
+        detailLabel.text = "subscribe.detailLabel".localized
         detailLabel.font = .systemFont(ofSize: 12)
         detailLabel.textColor = .white
         detailLabel.textAlignment = .center
     }
     
     private func configureSubscribeButton() {
-        subscribeButton.setTitle("Subscribe", for: .normal)
+        subscribeButton.setTitle("subscribe.button".localized, for: .normal)
         subscribeButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         subscribeButton.backgroundColor = AppColors.subscribeButtonColor
         subscribeButton.layer.cornerRadius = 28
@@ -235,11 +235,11 @@ extension PayScreen {
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         termsButton.setAttributedTitle(
-            NSAttributedString(string: "Terms of Use", attributes: underlineAttr),
+            NSAttributedString(string: "terms.of.use".localized, attributes: underlineAttr),
             for: .normal
         )
         privacyButton.setAttributedTitle(
-            NSAttributedString(string: "Privacy & Policy", attributes: underlineAttr),
+            NSAttributedString(string: "privacy.policy".localized, attributes: underlineAttr),
             for: .normal
         )
         

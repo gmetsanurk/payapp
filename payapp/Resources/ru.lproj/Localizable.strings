@@ -10,3 +10,27 @@
 "tabbar.feed" = "Лента";
 "tabbar.chat" = "Чат";
 "tabbar.profile" = "Профиль";
+
+"subscribe.button" = "Подписаться";
+"restore.button" = "Восстановить";
+"alert.ok" = "ОК";
+"alert.error.title" = "Ошибка";
+
+"slide.1.prefix" = "Получите ";
+"slide.1.highlight" = "599 монет";
+"slide.1.suffix" = " СЕЙЧАС и каждую неделю";
+
+"slide.2.prefix" = "Отправляйте ";
+"slide.2.highlight" = "неограниченные сообщения";
+
+"slide.3.prefix" = "Отключайте ";
+"slide.3.highlight" = "камеру и звук";
+
+"slide.4.prefix" = "Отметьте свой профиль как ";
+"slide.4.highlight" = "VIP";
+
+"subscribe.priceLabel" = "Подписка — $0.99 в неделю";
+"subscribe.detailLabel" = "План продлевается автоматически. Отмена в любое время.";
+"subscribe.button" = "Подписаться";
+"terms.of.use" = "Условия использования";
+"privacy.policy" = "Политика конфиденциальности";
