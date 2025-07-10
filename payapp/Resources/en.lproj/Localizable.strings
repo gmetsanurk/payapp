@@ -35,3 +35,12 @@
 "subscribe.button" = "Subscribe";
 "terms.of.use" = "Terms of Use";
 "privacy.policy" = "Privacy & Policy";
+
+"purchase.error.title" = "Purchase failed";
+
+"feed.title" = "Feed";
+"feed.segment.online" = "Online";
+"feed.segment.popular" = "Popular";
+"feed.segment.new" = "New";
+"feed.segment.following" = "Following";
+

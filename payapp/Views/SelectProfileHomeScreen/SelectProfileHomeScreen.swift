@@ -90,8 +90,7 @@ extension SelectProfileHomeScreen {
     }
     
     func setupTitleLabel() {
-        // TODO: localize
-        titleLabel.text = "Feed"
+        titleLabel.text = "feed.title".localized
         titleLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleLabel.textColor = .black
         headerView.addSubview(titleLabel)
@@ -106,7 +105,12 @@ extension SelectProfileHomeScreen {
     }
     
     private func setupSegmentedControl() -> UISegmentedControl {
-        let items = ["Online", "Popular", "New", "Following"]
+        let items = [
+                "feed.segment.online".localized,
+                "feed.segment.popular".localized,
+                "feed.segment.new".localized,
+                "feed.segment.following".localized
+            ]
         let sc = UISegmentedControl(items: items)
         sc.backgroundColor = .clear
         sc.selectedSegmentTintColor = .white

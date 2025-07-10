@@ -32,5 +32,13 @@
 "subscribe.priceLabel" = "Подписка — $0.99 в неделю";
 "subscribe.detailLabel" = "План продлевается автоматически. Отмена в любое время.";
 "subscribe.button" = "Подписаться";
-"terms.of.use" = "Условия использования";
-"privacy.policy" = "Политика конфиденциальности";
+"terms.of.use" = "Условия исп.";
+"privacy.policy" = "Политика конф.";
+
+"purchase.error.title" = "Покупка не удалась";
+
+"feed.title" = "Лента";
+"feed.segment.online" = "Онлайн";
+"feed.segment.popular" = "Популярное";
+"feed.segment.new" = "Новое";
+"feed.segment.following" = "Подписки";

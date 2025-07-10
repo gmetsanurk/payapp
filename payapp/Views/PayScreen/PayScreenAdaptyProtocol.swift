@@ -54,7 +54,7 @@ extension PayScreen: AdaptyPaywallControllerDelegate {
         error: AdaptyError
     ) {
         controller.dismiss(animated: true)
-        showAlert(title: "Purchase fail", message: error.localizedDescription)
+        showAlert(title: "purchase.error.title".localized, message: error.localizedDescription)
     }
     
     func paywallController(
