@@ -12,7 +12,7 @@ struct AppGeometry {
     struct SelectProfileHome {
         static let padding: CGFloat = 16
         static let itemsPerLine: Int = 2
-        static let cellHeight: CGFloat = 200
+        static let cellHeight: CGFloat = 250
         static let segmentedTopOffset: CGFloat = 12
         static let headerBottomOffsetMultiplier: CGFloat = 0.5
     }
